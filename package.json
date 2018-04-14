@@ -1,0 +1,20 @@
+{
+  "name": "sgc-bellingham-theme",
+  "version": "1.0.0",
+  "description": "Slavic Gospel Church website theme",
+  "main": "index.js",
+  "author": "Michael Savchuk",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "next",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-sass": "^3.2.1",
+    "gulp-uglify": "^3.0.0"
+  }
+}
