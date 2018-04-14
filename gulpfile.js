@@ -6,6 +6,8 @@ const uglify       = require("gulp-uglify");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano      = require("gulp-cssnano");
 const browserSync  = require("browser-sync").create();
+const webpack      = require('webpack-stream');
+const named        = require('vinyl-named');
 
 gulp.task("sync", () => {
 	browserSync.init({
@@ -41,9 +43,22 @@ gulp.task("scripts/global", () =>
 
 gulp.task("scripts", () =>
 	gulp.src("src/scripts/*.js")
-		.pipe(babel({
-			presets: ["env"]
+		.pipe(named())	
+		.pipe(webpack({
+			module: {
+				rules: [{
+					test: /\.js$/,
+					exclude: /(node_modules|bower_components)/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							presets: ['babel-preset-env']
+						}
+					}
+				}]
+			}
 		}))
+		//.pipe(babel({ presets: ["env"] }))
 		.pipe(uglify())
 		.pipe(gulp.dest("dist/scripts"))
 );
