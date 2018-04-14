@@ -1,6 +1,5 @@
 const gulp         = require("gulp");
 const sass         = require("gulp-sass");
-const concat       = require("gulp-concat");
 const babel        = require("gulp-babel");
 const uglify       = require("gulp-uglify");
 const autoprefixer = require("gulp-autoprefixer");
@@ -31,16 +30,6 @@ gulp.task("styles", () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task("scripts/global", () =>
-	gulp.src("src/scripts/global/*.js")
-		.pipe(concat("global.js"))
-		.pipe(babel({
-			presets: ["env"]
-		}))
-		.pipe(uglify())
-		.pipe(gulp.dest("dist/scripts"))
-);
-
 gulp.task("scripts", () =>
 	gulp.src("src/scripts/*.js")
 		.pipe(named())	
@@ -69,4 +58,4 @@ gulp.task("watchers", (done) => {
 	done();
 })
 
-gulp.task("dev", gulp.series("styles", "scripts/global", "scripts", "watchers", "sync"))
+gulp.task("dev", gulp.series("styles", "scripts", "watchers", "sync"))
