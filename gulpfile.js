@@ -54,6 +54,7 @@ gulp.task("scripts", () =>
 
 gulp.task("watchers", (done) => {
 	gulp.watch(["src/styles/**/*.scss", "src/styles/**/*.css"], gulp.parallel("styles"));
+	gulp.watch(["src/scripts/**/*.js"], gulp.parallel("scripts"));
 
 	done();
 })
