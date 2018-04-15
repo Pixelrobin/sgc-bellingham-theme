@@ -163,21 +163,32 @@ li {
 }
 
 /* Header */
-header {
+#header-hero {
 	position: relative;
 	width: 100%;
-	min-height: 18rem;
-	background-size: cover;
-	background-position: center bottom;
+	min-height: 20rem;
+	max-height: 50vh;
+	height: 50vh;
 	text-align: center;
 }
 
+#header-hero svg {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
 .header__logo {
-	display: inline-block;
-	position: relative;
+	position: absolute;
 	text-align: left;
-	margin-top: 6rem;
-	margin-left: 10rem;
+	margin-left: 5rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0 0 2rem white;
 
 	& h1 {
 		font-size: 4rem;
@@ -221,13 +232,15 @@ header {
 }
 
 header nav {
-	display: inline-block;
-
+	width: 100%;
+	text-align: center;
+	padding: 2rem 0;
+	
 	& ul {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
-		margin-top: 4rem;
+		display: inline-block;
 
 		& a {
 			color: $color-gray;
@@ -235,9 +248,9 @@ header nav {
 		}
 
 		& li {
+			display: inline-block;
 			margin: 0;
 			padding: 0;
-			float: left;
 			margin-left: 1rem;
 			padding: 0 0.5rem;
 			height: 2rem;
@@ -297,7 +310,6 @@ header nav {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
-	padding-top: 1rem;
 }
 
 .flex-row {

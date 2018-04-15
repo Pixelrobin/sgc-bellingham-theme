@@ -1,4 +1,6 @@
-window.DOMLoaded = function() {
+import onInteractive from './onInteractive.js';
+
+onInteractive(() => {
 	const sgc = document.getElementById("header__logo__sgc");
 
 	var lastSize = 0;
@@ -14,17 +16,12 @@ window.DOMLoaded = function() {
 	}
 
 	window.addEventListener('resize', function(e) {
-
 			if (!ticking) {
-
 				window.requestAnimationFrame(function() {
 				handleResize();
 				ticking = false;
 			});
-
 			ticking = true;
-
 		}
-
 	});
-}
+});

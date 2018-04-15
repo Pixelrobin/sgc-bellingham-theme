@@ -1,1 +1,0 @@
-"use strict";window.DOMLoaded=function(){var n=document.getElementById("header__logo__sgc"),i=!1;window.addEventListener("resize",function(e){i||(window.requestAnimationFrame(function(){window.innerWidth<580?"SGC"!==n.innerText&&(n.innerText="SGC"):"Slavic Gospel Chruch"!==n.innerText&&(n.innerText="Slavic Gospel Church"),i=!1}),i=!0)})};

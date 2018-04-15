@@ -4,6 +4,4 @@
 			<p>Footer</p>
 		</footer>
 	</div>
-
-	<script type="text/javascript">DOMLoaded();</script>
 </body>
