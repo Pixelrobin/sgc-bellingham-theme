@@ -2,24 +2,38 @@
 /* Created by Michael Savchuk (With code from Eric Meyer's reset.css */
 
 @import "deps/reset";
+//@import "deps/simplegrid";
 
 $font-fira-sans: "Fira Sans", Arial, Helvetica, sans-serif;
-$font-open-sans: "Open Sans", Arial, Helvetica, sans-serif;
+$font-arial: Arial, Helvetica, sans-serif;
 
 $color-gray: #1b191a;
 $color-lightgray: #595b5c;
 $color-blue: #00a1ab;
 $color-lightblue: #72ced4;
 
+$radius-small: 0.25rem;
+
 /* Base styles */
 
 * { box-sizing: border-box; }
 
+html {
+	font-family: $font-arial;
+	font-size: 16px;
+
+	@media screen and (min-width: 3840px) {
+		font-size: 20px;
+	}
+
+	@media screen and (max-width: 500px) {
+		font-size: 12px;
+	}
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	font-size: 16px;
-	font-family: $font-open-sans;
 	min-width: 320px;
 }
 
@@ -75,12 +89,20 @@ button, .button, input[type="button"], input[type="submit"] {
 	font-family: $font-fira-sans;
 	letter-spacing: 0.075rem;
 	text-transform: uppercase;
-	transition: background 0.5s, box-shadow 0.25s, transform 0.25s;
+	transition: background 0.5s, color 0.5s, box-shadow 0.25s, transform 0.25s;
 	transform: none;
 
 	&.button--blue {
 		background: linear-gradient($color-blue, $color-lightblue);
 		background-size: 1px 5rem;
+	}
+
+	&.button--white {
+		background: linear-gradient(transparent, $color-gray);
+		border: 0.15rem solid white;
+		line-height: 2.2rem;
+		background-size: 1px 5rem;
+		color: white;
 	}
 
 	&.button--wide {
@@ -117,7 +139,7 @@ input[type="text"], input[type="email"], textarea, select {
 	margin-right: 0.5rem;
 	border-radius: 0.25rem;
 	border: 0.125rem solid $color-lightgray;
-	font-family: $font-open-sans;
+	font-family: $font-arial;
 	transition: border-color 0.25s, box-shadow 0.25s;
 	font-size: 1rem;
 
@@ -308,12 +330,15 @@ header nav {
 /* Layout */
 .page {
 	width: 90%;
-	max-width: 1024px;
+	max-width: 64rem;
 	margin: 0 auto;
 }
 
 .flex-row {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 100%;
 
 	& .flex-row__item {
 		flex: 1;
@@ -329,10 +354,82 @@ header nav {
 }
 
 #heading__slideshow {
-	width: 75%;
+	position: relative;
+	width: 100%;
 	height: 100%;
 	float: left;
 	background-color: $color-gray;
+	border-radius: $radius-small;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@keyframes go-up {
+	from {
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.heading__slideshow__slide {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: inherit;
+	display: none;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.2;
+		z-index: 2;
+		border-radius: inherit;
+	}
+
+	&.heading__slideshow__slide--current {
+		display: block;
+		animation-name: fade-in;
+		animation-duration: 1s;
+
+		& h1 {
+			animation-name: go-up;
+			animation-duration: 0.5s;
+		}
+	}
+
+	& .heading__slideshow__slide__content {
+		color: white;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		text-align: center;
+		z-index: 3;
+	}
+
+	& a {
+		color: white;
+		font-weight: bold;
+	}
 }
 
 #heading__events {
@@ -388,27 +485,41 @@ header nav {
 	}
 }
 
+#map {
+	height: 20rem;
+	background-color: black;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 #big-links {
 	width: 100%;
-	display: flex;
+	display: block;
+
+	@media screen and (min-width: 640px) {
+		display: flex;
+	}
 }
 
 .big-link {
 	display: block;
 	flex: 1;
 	background-color: $color-blue;
-	border-radius: 0.25rem;
+	border-radius: $radius-small;
 	color: white;
 	text-decoration: none;
 	font-size: 1.5rem;
 	margin-bottom: 1rem;
 	font-family: $font-fira-sans;
-	height: 12rem;
+	height: 20rem;
 	position: relative;
 	background-size: cover;
 	background-position: center center;
 	transition: transform 0.25s, box-shadow 0.25s;
-	margin-right: 1rem;
+	margin-right: 0;
+
+	@media screen and (min-width: 640px) { margin-right: 1rem; }
 
 	&:last-child {margin-right: 0;}
 
@@ -448,9 +559,170 @@ header nav {
 	}
 }
 
+.video-thumbnail {
+	background-color: $color-gray;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	position: relative;
+	border-radius: $radius-small;
+	min-height: 16rem;
+
+	& .video-thumbnail__cover {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(rgba($color-gray, 0.15), rgba($color-gray, 0.8));
+		background-repeat: repeat-x;
+		transform: none;
+		border-radius: inherit;
+	}
+
+	& .feather {
+		display: inline-block;
+		width: 3rem;
+		height: 3rem;
+	}
+
+	& .video-thumbnail__content {
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		transform: translateY(-50%);
+	}
+
+	& .text-caption {
+		color: white;
+	}
+}
+
+.home-times .flex-row__item {
+	flex-basis: 50%;
+
+	@media screen and (min-width: 600px) {
+		flex-basis: 50%;
+	}
+
+	@media screen and (min-width: 800px) {
+		flex-basis: 33.333%;
+	}
+}
+
+.home-row {
+	display: block;
+
+	@media screen and (min-width: 640px) {
+		display: flex;
+
+		& .flex-row__item {
+			margin-right: 1rem;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.subtle-card {
+	background-color: whitesmoke;
+	padding: 0.5rem;
+	border-radius: $radius-small;
+}
+
 /* Misc */
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
 }
+
+/* Helpers */
+.text-centered {
+	text-align: center;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-caption {
+	color: $color-lightgray;
+	font-weight: bold;
+	font-size: 1rem;
+	line-height: 1rem;
+	margin: 0;
+}
+
+a.black-link {
+	color: $color-gray;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.full-width {
+	width: 100%!important;
+	max-width: initial!important;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.bg-cover {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.relative { position: relative; }
+
+.white { color: white; }
+.bg-gray { background-color: $color-gray; }
+
+$mp-props: m p;
+$mp-sides: t b l r;
+
+$mp-props-f: margin padding;
+$mp-sides-f: top bottom left right;
+
+// https://css-tricks.com/snippets/sass/power-function/
+@function pow($number, $exponent) {
+	$value: 1;
+  
+	@if $exponent > 0 {
+	  @for $i from 1 through $exponent {
+		$value: $value * $number;
+	  }
+	}
+  
+	@return $value;
+  }
+
+@for $p from 1 through 2 {
+	@for $m from 0 through 6 {
+		@for $s from 1 through 4 {
+			.#{nth($mp-props, $p)}#{nth($mp-sides, $s)}-#{$m} {
+				#{nth($mp-props-f, $p)}-#{nth($mp-sides-f, $s)}: $m * 1rem!important;
+			}
+		}
+
+		.#{nth($mp-props, $p)}-#{$m} {
+			#{nth($mp-props-f, $p)}: $m * 1rem!important;
+		}
+	}
+}
+
+// 1, 2, 4, 8, 16, 32

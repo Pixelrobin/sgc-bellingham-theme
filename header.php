@@ -42,16 +42,16 @@
 				</div>
 			</div>
 
-			<nav>
-				<ul>
-					<a href = "#"><li class="current">Home</li></a>
-					<a href = "#"><li>News</li></a>
-					<a href = "#"><li>Archive</li></a>
-					<a href = "#"><li class="live" >Live</li></a>
-					<a href = "#"><li>Calendar</li></a>
-					<a href = "#"><li>About</li></a>
-				</ul>
-			</nav>
+			
+				<?php wp_nav_menu(
+					array(
+						'menu'       => 'header',
+						'container'  => 'nav',
+						'menu_class' => '',
+						'menu_id'    => 'main-nav'
+					)
+				); ?>
+			
 		</header>
 
 		<div class="page">

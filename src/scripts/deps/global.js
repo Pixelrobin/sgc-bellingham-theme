@@ -1,6 +1,4 @@
-import onInteractive from './onInteractive.js';
-
-onInteractive(() => {
+document.addEventListener("DOMContentLoaded", () => {
 	const sgc = document.getElementById("header__logo__sgc");
 
 	var lastSize = 0;
