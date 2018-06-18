@@ -1,0 +1,20 @@
+#pre-footer {
+	min-height: 95vh;
+}
+
+.page {
+	width: 90%;
+	max-width: 64rem;
+	margin: 0 auto;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	//max-width: 100%;
+
+	& .flex-row__item {
+		flex: 1;
+	}
+}

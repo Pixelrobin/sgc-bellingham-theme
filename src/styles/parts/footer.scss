@@ -1,0 +1,30 @@
+@import '../deps/meta';
+
+footer {
+	background: linear-gradient(to top, $color-gray, $color-lightgray);
+	color: white;
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: 4rem 2rem;
+}
+
+.footer-row {
+	display: block;
+
+	@media screen and (min-width: 720px) {
+		display: flex;
+	}
+}
+
+.service-times .flex-row__item {
+	flex-basis: 100%;
+
+	@media screen and (min-width: 400px) {
+		flex-basis: 50%;
+	}
+
+	@media screen and (min-width: 1000px) {
+		flex-basis: 33.333%;
+	}
+}

@@ -21,8 +21,10 @@
     "webpack-stream": "^4.0.3"
   },
   "dependencies": {
+    "classlist-polyfill": "^1.2.0",
     "fullcalendar": "^3.9.0",
     "google-maps": "^3.2.1",
+    "promise-polyfill": "^8.0.0",
     "whatwg-fetch": "^2.0.4"
   }
 }

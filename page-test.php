@@ -11,6 +11,11 @@
 	<a class="button" href="#">Anchor button</a>
 	<button class = "button--blue">Blue button</button>
 
+	<div style="background-color: black; width: 100%; padding: 5rem; text-align: center; margin-bottom: 1rem;">
+		<button class="button--white">White button</button>
+		<button class="button--ghost">Ghost button</button>
+	</div>
+
 	<form>
 		<label>
 			Text Input:

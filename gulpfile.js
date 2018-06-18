@@ -27,7 +27,7 @@ gulp.task("styles", () => {
 		}))
 		.pipe(cssnano())
 		.pipe(gulp.dest("dist/styles"))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 gulp.task("scripts", () =>

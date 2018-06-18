@@ -1280,6 +1280,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classlist-polyfill@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz#935bc2dfd9458a876b279617514638bcaa964a2e"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -4513,6 +4517,10 @@ process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
 process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
+
+promise-polyfill@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-8.0.0.tgz#b47c7fc74052cc5b2132b703cca144f1a5eb56ef"
 
 prr@~1.0.1:
   version "1.0.1"

@@ -1,0 +1,30 @@
+.calendar {
+	padding: 1rem;
+	background-color: whitesmoke;
+	border-radius: $radius-small;
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+
+	.upcoming-event__date {
+		flex-grow: 0;
+		margin-right: 1rem;
+		width: 3rem;
+		text-align: center;
+	}
+
+	.upcoming-event__content {
+		flex: 1;
+
+		h1 {
+			margin-bottom: 0.5rem;
+			line-height: 130%;
+		}
+
+		p {
+			font-weight: bold;
+			font-size: 1.05rem;
+			margin-bottom: 0;
+		}
+	}
+}

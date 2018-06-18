@@ -1,0 +1,119 @@
+@import "../deps/meta";
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Helpers */
+.text-centered {
+	text-align: center;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.no-decoration {
+	text-decoration: none!important;
+}
+
+.text-caption {
+	color: $color-lightgray;
+	font-weight: bold;
+	font-size: 0.95rem;
+	line-height: 1rem;
+	margin: 0;
+}
+
+a.black-link {
+	color: $color-gray;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+a.link-inherit {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover { text-decoration: underline; }
+}
+
+.block-centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.full-width {
+	width: 100%!important;
+	max-width: initial!important;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.bg-cover {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.bg-black { background-color: $color-gray; }
+.bg-white {background-color: white; }
+
+.relative { position: relative; }
+
+.white { color: white; }
+.bg-gray { background-color: $color-gray; }
+
+@for $shadow from 0 through 5 {
+	.shadow-#{$shadow} {
+		@include shadow($shadow, $color-gray);
+	}
+}
+
+$mp-props: m p;
+$mp-sides: t b l r;
+
+$mp-props-f: margin padding;
+$mp-sides-f: top bottom left right;
+
+// https://css-tricks.com/snippets/sass/power-function/
+@function pow($number, $exponent) {
+	$value: 1;
+  
+	@if $exponent > 0 {
+	  @for $i from 1 through $exponent {
+		$value: $value * $number;
+	  }
+	}
+  
+	@return $value;
+  }
+
+@for $p from 1 through 2 {
+	@for $m from 0 through 6 {
+		.#{nth($mp-props, $p)}-#{$m} {
+			#{nth($mp-props-f, $p)}: $m * 1rem;
+		}
+	}
+
+
+	@for $m from 0 through 6 {
+		@for $s from 1 through 4 {
+			.#{nth($mp-props, $p)}#{nth($mp-sides, $s)}-#{$m} {
+				#{nth($mp-props-f, $p)}-#{nth($mp-sides-f, $s)}: $m * 1rem;
+			}
+		}
+	}
+}

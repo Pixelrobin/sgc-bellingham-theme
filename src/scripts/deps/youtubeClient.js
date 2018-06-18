@@ -1,5 +1,6 @@
 import privates from './privates';
 import 'whatwg-fetch';
+import 'promise-polyfill/src/polyfill';
 
 export function buildYTAPIRequest(path, params) {
 	const keys = Object.keys(params);
@@ -27,5 +28,30 @@ export function getLatestVideo(cb) {
 			if (data.items && data.items.length > 0) {
 				cb(data.items[0]);
 			}
+		});
+}
+
+export function checkIfStreaming(cb) {
+	const request = buildYTAPIRequest('search', {
+		channelId: privates.YTChannelID,
+		maxResults: 1,
+		part: 'snippet',
+		type: 'video',
+		eventType: 'live'
+	});
+
+	fetch(request)
+		.then((response) => response.json())
+		.then((data) => {
+			let result = { streaming: data.items.length > 0 }
+
+			if (data.items.length > 0) {
+				result.id = data.items[0].id.videoId;
+			}
+
+			cb({
+				streaming: true,
+				id: 'null'
+			});
 		});
 }

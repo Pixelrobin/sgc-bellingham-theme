@@ -1,28 +1,8 @@
-import './deps/global.js';
-import { getLatestVideo } from './deps/youtubeClient';
+import './global.js';
+import { getLatestVideo, checkIfStreaming } from './deps/youtubeClient';
 import Tinyshow from './deps/tinyshow';
 
 document.addEventListener("DOMContentLoaded", () => {
-	
-	// 3D Scroll effect
-	
-	const mountainsBack = document.getElementById('mountains-back');
-	const mountainsFront = document.getElementById('mountains-front');
-
-	let ticking = false;
-
-	function setMountainParallax() {
-		const scrollPos = window.scrollY;
-
-		mountainsBack.setAttribute('transform', `translate(0, ${scrollPos * 0.3})`);
-		mountainsFront.setAttribute('transform', `translate(0, ${scrollPos * 0.15})`);
-		ticking = false;
-	}
-
-	window.addEventListener('scroll', (e) => {
-		if (!ticking) window.requestAnimationFrame(setMountainParallax);
-		ticking = true;
-	});
 
 	// Youtube stuff
 
@@ -44,8 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Slideshow
 
-	let show = new Tinyshow(document.getElementById('heading__slideshow'), {
+	const show = new Tinyshow(document.getElementById('heading__slideshow'), {
 		autoDelay: 5000,
-		class: 'heading__slideshow__slide--current'
+		slideClass: 'heading__slideshow__slide',
+		currentClass: 'heading__slideshow__slide--current'
 	});
+
+	const previousButton = document.getElementById('heading__slideshow__left');
+	const nextButton     = document.getElementById('heading__slideshow__right');
+
+	previousButton.addEventListener('click', () => { show.changeSlide(-1); });
+	nextButton.addEventListener('click', () => { show.changeSlide(1); });
 });

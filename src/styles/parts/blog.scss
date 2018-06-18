@@ -1,0 +1,52 @@
+@import "../deps/meta";
+
+.blog-post {
+	dl {
+		font-size: 0.95rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
+
+		dt, dd { display: inline; }
+	}
+
+	.blog-post__image {
+		//height: 10rem;
+		//max-height: 10rem;
+		overflow: hidden;
+		position: relative;
+		border-radius: $radius-small;
+		background-color: $color-lightgray;
+
+		.blog-post__image__cover {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			opacity: 0.5;
+			border-radius: inherit;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	.blog-post__heading {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		padding: 0 2rem;
+		text-align: center;
+		position: relative;
+	}
+
+	p {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
