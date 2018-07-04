@@ -4,9 +4,10 @@ add_theme_support('post-thumbnails');
 
 function register_my_menu() {
 	register_nav_menu( 'header', 'Header Menu' );
+	register_nav_menu( 'test', 'Test Menu' );
 }
 
-function sgc_theme_parse_events_for_cards($posts, $from = null, $to = null) {
+function sgc_theme_parse_events($posts, $from = null, $to = null) {
 	if (is_null($from)) $from = new DateTime();
 
 	foreach ($posts as $post) {
@@ -15,8 +16,13 @@ function sgc_theme_parse_events_for_cards($posts, $from = null, $to = null) {
 		$single_day  = $start_date->diff($end_date);
 
 		$single_day = $single_day->format('%a') == '0';
+
+		$post->sgc_theme_date_range = $start_date->format('F Y') . ' &#8211; ' . $end_date->format('F Y');
+		$post->sgc_theme_time_range = $single_day
+			? 'All Day'
+			: $start_date->format('g:H A') . ' &#8211; ' . $end_date->format('g:H A');
 		
-		$time         = '';
+		/*$time         = '';
 		$date_weekday = $start_date->format('D');
 		$date_day     = $start_date->format('j');
 		$ends         = false;
@@ -78,26 +84,19 @@ function sgc_theme_parse_events_for_cards($posts, $from = null, $to = null) {
 			$date_day     = $end_date->format('j');
 		}
 
-		/*if ($post->all_day == '1') {
-			$time_start = $start_date->format('F j, Y');
-			$time_end   = $end_date->format('F j, Y');
-		} else {
-			$time_start = $start_date->format('F j, Y');
-			$time_end   = $end_date->format('F j, Y');
-		}*/
-
 		$post->sgc_theme_time         = $time;
 		$post->sgc_theme_date_weekday = $date_weekday;
 		$post->sgc_theme_date_day     = $date_day;
 		$post->sgc_theme_show_date    = $show_date;
 		$post->sgc_theme_tag          = $tag;
 		$post->sgc_theme_description  = $description;
+		*/
 	}
 
 	return $posts;
 }
 
-function sgc_theme_parse_calendar_params() {
+function sgc_theme_date_from_params() {
 	$month = $_GET['month'];
 	$year  = $_GET['year'];
 
@@ -110,10 +109,18 @@ function sgc_theme_parse_calendar_params() {
 		if (!empty($date_errors['warning_count'])) return null;
 	} else return null;
 
-	$result = wp_ec_getter_get_results(array(
-		'from' => $date->format('Y-m') . '-01 00:00:00',
-		'to'   => $date->format('Y-m-t')  . ' 23:59:59'
-	));
-
-	return $result;
+	return $date;
 }
+
+// http://blog.room34.com/archives/5360
+function sgc_theme_empty_content($str) {
+	return trim(str_replace('&nbsp;','',strip_tags($str,'<img>'))) == '';
+}
+
+function sgc_theme_remove_dead_nav_links($atts, $item, $args, $depth) {
+	if ($item->url == '#') $atts['href'] = '';
+
+	return $atts;
+}
+
+add_filter('nav_menu_link_attributes', sgc_theme_remove_dead_nav_links, 10, 4);

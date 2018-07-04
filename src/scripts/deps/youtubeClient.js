@@ -49,9 +49,6 @@ export function checkIfStreaming(cb) {
 				result.id = data.items[0].id.videoId;
 			}
 
-			cb({
-				streaming: true,
-				id: 'null'
-			});
+			cb(result);
 		});
 }

@@ -34,7 +34,17 @@
 		}
 
 		.blog-post__content {
-			padding: 2rem;
+			@media screen and (min-width: $breakpoint-tablet) {
+				padding: 2rem;
+			}
+		}
+	}
+
+	.blog-post__read-more {
+		width: 100%;
+
+		@media screen and (min-width: $breakpoint-phone) {
+			width: auto;
 		}
 	}
 }

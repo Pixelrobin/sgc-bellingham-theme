@@ -1,9 +1,9 @@
 <?php
 	global $post;
 	$post_slug  = $post->post_name;
-	$post_title = $post->post_title;
 
 	global $script_name;
+	global $page_name;
 
 	if ($script_name == NULL) $script_name = 'global';
 ?>
@@ -12,11 +12,10 @@
 <html lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width, inital-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/dist/styles/main.css">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans:600|Open+Sans&amp;subset=cyrillic" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/dist/scripts/<?php echo $script_name ?>.js"></script>
@@ -26,34 +25,46 @@
 	<div id="wrapper">
 		<div id="pre-footer">
 			<header>
-				<div
-					id="header-hero"
-					class="<?php if ($post_slug == 'home') echo 'home' ?>"
-					style="background-image: url(<?php echo get_template_directory_uri();?>/media/mountain-range.jpg); padding: <?php echo is_front_page() ? 5 : 2; ?>rem"
-				>
+				<?php if ($post_slug == 'home'): ?>
+					<div
+						id="header-hero"
+						style="<?php echo 'background-image: url(' . get_template_directory_uri() . '/media/mountain-range.jpg);' ?>"
+					>
 
-					<a href="<?php get_home_url(); ?>"><img src="<?php echo get_template_directory_uri()?>/media/logo.svg" alt="Slavig Gospel Church logo." id="header-hero__logo"></a>
-				</div>
+						<a href="<?php get_home_url(); ?>"><img src="<?php echo get_template_directory_uri()?>/media/logo.svg" alt="Slavig Gospel Church logo." id="header-hero__logo"></a>
+					</div>
+				<?php endif; ?>
 
-					<nav id="main-nav">
-						<div id="main-nav__title"><?php echo $post_title ?></div>
-						<ul class="clearfix">
-							<li id="main-nav__toggle"><span class="feather" data-feather="menu"></span></li>
-
-							<?php wp_nav_menu(
-								array(
-									'menu'        => 'header',
-									'container'   => '',
-									'menu_class'  => '',
-									'depth'       => 1,
-									'items_wrap'  => '%3$s',
-									'link_before' => '<span>',
-									'link_after'  => '</span>'
-								)
-							); ?>
-						</ul>
-					</nav>
 				
+
+				<nav id="main-nav" class="<?php echo ($post_slug == 'home') ? 'main-nav--home' : '' ?>">
+					<?php if ($page_name != NULL): ?><div id="main-nav__title"><?php echo $page_name; ?></div><?php endif ?>
+
+					<?php if ($post_slug != 'home'): ?>
+						<a href="<?php echo get_home_url(); ?>">
+							<div id="header-mini-logo">
+								<img src="<?php echo get_template_directory_uri() . '/media/logo-nav.svg' ?>">
+								<span>SGC</span>
+							</div>
+						</a>
+					<?php endif; ?>
+					
+					<span id="main-nav__toggle" class="feather" data-feather="menu" role="button"></span>
+
+					<ul class="clearfix">
+						<?php wp_nav_menu(
+							array(
+								'menu'        => 'header-menu',
+								'container'   => '',
+								'menu_class'  => '',
+								'depth'       => 2,
+								'items_wrap'  => '%3$s',
+								'link_before' => '<span>',
+								'link_after'  => '</span>'
+							)
+						); ?>
+					</ul>
+				</nav>
 			</header>
 
 			<div class="page">

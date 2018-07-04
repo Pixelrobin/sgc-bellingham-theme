@@ -15,9 +15,16 @@
 				<?php endif; ?>
 
 				<div class="blog-post__content">
+					<?php if ($single) yoast_breadcrumb('<p id="breadcrumbs">','</p>'); ?>
+					
 					<h1><?php the_title(); ?></h1>
-					<?php the_excerpt(); ?>
-					<a href="<?php the_permalink(); ?>" class="button">Read More</a>
+					<p class="text-bold"><?php the_date(); ?></p>
+
+					<?php $single ? the_content() : the_excerpt(); ?>
+					
+					<?php if (!$single): ?>
+						<a href="<?php the_permalink(); ?>" class="button blog-post__read-more">Read More</a>
+					<?php endif ?>
 				</div>
 			</article>
 		</section>

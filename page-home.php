@@ -54,15 +54,15 @@
 			<div class="video-thumbnail__content">
 				<h1>Latest Video</h1>
 				<p id="latest-service__name" class="text-caption mb-1"></p>
-				<a id="latest-service__link" class="button button--white">Watch now</a>
+				<a id="latest-service__link" class="button button--white">Watch now<span class="ml-1" data-feather="play"></span></a>
 			</div>
 		</div>
 
 		<div class="flex-row__item mb-1">
-			<h1 class="mb-1 h2 text-centered">Upcoming events</h1>
+			<h1 class="mb-1 h2 text-centered">Latest Events</h1>
 
 			<?php
-				$upcoming_events = sgc_theme_parse_events_for_cards(
+				$upcoming_events = sgc_theme_parse_events(
 					wp_ec_getter_get_results(array(
 						'limit' => 5
 					))
@@ -72,38 +72,45 @@
 			?>
 			
 			<?php if ($upcoming_events): ?>
-				<?php foreach ($upcoming_events as $post): ?>
-					<?php setup_postdata($post); ?>
+				<ul>
+					<?php foreach ($upcoming_events as $post): ?>
+						<?php setup_postdata($post); ?>
 
-					<a href="<?php the_permalink(); ?>" class="black-link no-decoration">
-						<div class="upcoming-event">
+						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+						
+						<?php /* ?>
+						<a href="<?php the_permalink(); ?>" class="black-link no-decoration">
+							<div class="upcoming-event">
 
-							<div class="upcoming-event__date">
-								<?php if ($post->sgc_theme_show_date): ?>
-									<span class="text-caption" style="color: white;"><?php echo $post->sgc_theme_date_weekday ?></span>
-									<br>
-									<span class="h1"><?php echo $post->sgc_theme_date_day ?></span>
-								<?php endif ?>
+								<div class="upcoming-event__date">
+									<?php if ($post->sgc_theme_show_date): ?>
+										<span class="text-caption" style="color: white;"><?php echo $post->sgc_theme_date_weekday ?></span>
+										<br>
+										<span class="h1"><?php echo $post->sgc_theme_date_day ?></span>
+									<?php endif ?>
+								</div>
+
+								<div class="upcoming-event__content">
+									<h1 class="h3" style="font-size: 1.25rem;">
+										<?php
+											$span = '';
+
+											if (!is_null($post->sgc_theme_tag)) {
+												$span = '(' . $post->sgc_theme_tag . ')';
+											}
+
+											echo $post->post_title . ' ' . $span;
+										?>
+									</h1>
+									<p><?php echo $post->sgc_theme_time ?></p>
+								</div>
 							</div>
+						</a>
 
-							<div class="upcoming-event__content">
-								<h1 class="h3" style="font-size: 1.25rem;">
-									<?php
-										$span = '';
+						<?php */ ?>
 
-										if (!is_null($post->sgc_theme_tag)) {
-											$span = '(' . $post->sgc_theme_tag . ')';
-										}
-
-										echo $post->post_title . ' ' . $span;
-									?>
-								</h1>
-								<p><?php echo $post->sgc_theme_time ?></p>
-							</div>
-						</div>
-					</a>
-
-				<?php endforeach ?>
+					<?php endforeach ?>
+				</ul>
 			<?php endif ?>
 
 			<a href="#" class="button full-width button--blue">Full Calendar</a>

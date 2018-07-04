@@ -27,6 +27,10 @@
 	margin: 0;
 }
 
+
+.float-left { float: left; }
+.float-right { float: right; }
+
 a.black-link {
 	color: $color-gray;
 	text-decoration: none;
@@ -41,6 +45,10 @@ a.link-inherit {
 	text-decoration: none;
 
 	&:hover { text-decoration: underline; }
+}
+
+.block {
+	display: block;
 }
 
 .block-centered {
@@ -70,6 +78,8 @@ a.link-inherit {
 
 .bg-black { background-color: $color-gray; }
 .bg-white {background-color: white; }
+
+.light-gray { color: $color-lightgray; }
 
 .relative { position: relative; }
 
