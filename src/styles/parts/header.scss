@@ -58,8 +58,7 @@ header {
 
 @keyframes live-dot {
 	0% { opacity: 0.1; }
-	50% { opacity: 1; }
-	100% { opacity: 0.1; }
+	100% { opacity: 1; }
 }
 
 #main-nav {
@@ -71,6 +70,7 @@ header {
 
 	&.main-nav--home {
 		background-color: white;
+		margin-bottom: 0;
 	}
 
 	#main-nav__toggle {
@@ -110,7 +110,7 @@ header {
 			transition: color 0.15s;
 		}
 
-		&.menu-item-has-children > a {
+		&.hide-on-mobile > a {
 			display: none;
 		}
 	}
@@ -122,6 +122,36 @@ header {
 
 	&.main-nav--expanded ul {
 		display: block;
+	}
+
+	#live-now {
+		display: inline-block;
+		float: right;
+		padding: 1rem;
+		text-decoration: none;
+		font-weight: bold;
+		color: white;
+		background-color: red;
+		border-radius: $radius-small;
+		text-transform: uppercase;
+		z-index: 1000;
+		animation-name: live-notification;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	
+		span::before {
+			content: "";
+			display: inline-block;
+			background-color: white;
+			border-radius: 50%;
+			width: 0.75rem;
+			height: 0.75rem;
+			margin-right: 0.25rem;
+			animation-name: live-dot;
+			animation-direction: alternate;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+		}
 	}
 
 	@media screen and (max-width: $breakpoint-tablet) {
@@ -175,6 +205,7 @@ header {
 
 			li {
 				display: block;
+				white-space: nowrap;
 			}
 
 			a {
@@ -201,9 +232,9 @@ header {
 			}
 		}
 
-		li.menu-item-has-children {
-			& > a { display: block; }
+		li.hide-on-mobile > a { display: block; }
 
+		li.menu-item-has-children {
 			.sub-menu { display: none; }
 
 			&:hover .sub-menu { display: block; }
@@ -214,6 +245,20 @@ header {
 			}
 		}
 	}
+}
+
+/*#live-now::before {
+	content: "";
+	display: inline-block;
+	width: 0.75rem;
+	height: 0.75rem;
+	background-color: red;
+	border-radius: 50%;
+	margin-right: 0.25rem;
+	animation-name: live-notification;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	margin-bottom: 0.075rem;
 }
 
 /*

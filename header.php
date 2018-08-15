@@ -31,7 +31,7 @@
 						style="<?php echo 'background-image: url(' . get_template_directory_uri() . '/media/mountain-range.jpg);' ?>"
 					>
 
-						<a href="<?php get_home_url(); ?>"><img src="<?php echo get_template_directory_uri()?>/media/logo.svg" alt="Slavig Gospel Church logo." id="header-hero__logo"></a>
+						<a href="<?php get_home_url(); ?>"><img src="<?php echo get_template_directory_uri()?>/media/logo.svg" alt="Slavic Gospel Church logo." id="header-hero__logo"></a>
 					</div>
 				<?php endif; ?>
 
@@ -64,6 +64,8 @@
 							)
 						); ?>
 					</ul>
+
+					<a id="live-now" href="#"><span>Live Now</span></a>
 				</nav>
 			</header>
 
