@@ -12,13 +12,17 @@
 <html lang="en">
 
 <head>
+	<title><?php wp_title(); ?></title>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/dist/styles/main.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,700" rel="stylesheet">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/dist/scripts/<?php echo $script_name ?>.js"></script>
+
+	<?php wp_head(); ?>
 </head>
 
 <body>
@@ -65,7 +69,7 @@
 						); ?>
 					</ul>
 
-					<a id="live-now" href="#"><span>Live Now</span></a>
+					<!--<a id="live-now" href="#"><span>Live Now</span></a>-->
 				</nav>
 			</header>
 
