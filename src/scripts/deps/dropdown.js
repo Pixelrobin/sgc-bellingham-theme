@@ -54,7 +54,7 @@ export default class Dropdown {
 			this.deactivateTimeout = setTimeout(() => {
 				this.element.classList.remove('active');
 				this.element.classList.add('deactivate');
-			}, 2000);
+			}, 500);
 		}
 	}
 
