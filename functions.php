@@ -112,6 +112,7 @@ function sgc_theme_date_from_params() {
 	return $date;
 }
 
+/*
 // http://blog.room34.com/archives/5360
 function sgc_theme_empty_content($str) {
 	return trim(str_replace('&nbsp;','',strip_tags($str,'<img>'))) == '';
@@ -124,3 +125,4 @@ function sgc_theme_remove_dead_nav_links($atts, $item, $args, $depth) {
 }
 
 add_filter('nav_menu_link_attributes', sgc_theme_remove_dead_nav_links, 10, 4);
+*/

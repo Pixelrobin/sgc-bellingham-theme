@@ -5,7 +5,7 @@
 }
 
 html {
-	font-family: $font-open-sans;
+	font-family: $font-asap;
 	font-size: 100%;
 	font-weight: $font-weight-normal;
 }
@@ -24,7 +24,7 @@ body {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-	font-family: $font-open-sans;
+	font-family: $font-asap;
 	font-weight: $font-weight-bold;
 	margin: 0;
 	margin-bottom: 1.5rem;
@@ -92,7 +92,7 @@ li {
 }
 
 a {
-	color: $color-gray;
+	color: inherit;
 }
 
 /* Button */
@@ -113,7 +113,7 @@ button, .button, input[type="button"], input[type="submit"] {
 	margin-right: 1rem;
 	margin-bottom: 1rem;
 	white-space: nowrap;
-	font-family: $font-open-sans;
+	font-family: $font-asap;
 	font-weight: $font-weight-bold;
 	text-transform: uppercase;
 	text-align: center;
@@ -183,7 +183,7 @@ input[type="text"], input[type="email"], textarea, select {
 	margin-right: 1rem;
 	border-radius: 0.25rem;
 	border: 0.125rem solid $color-lightgray;
-	font-family: $font-open-sans;
+	font-family: $font-asap;
 	transition: border-color 0.25s, box-shadow 0.25s;
 	font-size: 1rem;
 
