@@ -1,11 +1,12 @@
 const gulp         = require("gulp");
 const sass         = require("gulp-sass");
-const babel        = require("gulp-babel");
+//const babel        = require("gulp-babel");
 const uglify       = require("gulp-uglify");
+const webpack      = require('webpack');
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano      = require("gulp-cssnano");
 const browserSync  = require("browser-sync").create();
-const webpack      = require('webpack-stream');
+const gulpWebpack  = require('webpack-stream');
 const named        = require('vinyl-named');
 
 gulp.task("sync", () => {
@@ -32,8 +33,8 @@ gulp.task("styles", () => {
 
 gulp.task("scripts", () =>
 	gulp.src("src/scripts/*.js")
-		.pipe(named())	
-		.pipe(webpack({
+		.pipe(named())
+		.pipe(gulpWebpack({
 			module: {
 				rules: [{
 					test: /\.js$/,
@@ -45,10 +46,12 @@ gulp.task("scripts", () =>
 						}
 					}
 				}]
-			}
-		}))
+			},
+
+			mode: 'development'
+		}, webpack))
 		//.pipe(babel({ presets: ["env"] }))
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(gulp.dest("dist/scripts"))
 );
 
