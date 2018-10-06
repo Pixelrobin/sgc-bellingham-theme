@@ -1,11 +1,8 @@
-import { checkIfStreaming } from './deps/youtubeClient';
+//import { checkIfStreaming } from './deps/youtubeClient';
 import 'classlist-polyfill';
-
-const phoneWidth = '480';
+import Dropdown from './deps/dropdown.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-
-	console.log("ontouchstart" in document.documentElement);
 
 	const sgc       = document.getElementById("header__logo__sgc");
 	
@@ -71,72 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	const dropdowns = Array
 		.from(nav.querySelectorAll('.menu-item-has-children'))
-		.map(element => {
-			return {
-				element: element,
-				deactivateTimeout: -1,
-				clickDebounceTimeout: -1,
-				clickDebounce: false
-			}
-		});
-
-	dropdowns.forEach((dropdown) => {
-
-		const activate = () => {
-			clearTimeout(dropdown.deactivateTimeout);
-			dropdown.element.classList.add('active');
-		}
-
-		const deactivate = () => {
-			clearTimeout(dropdown.deactivateTimeout);
-
-			dropdown.deactivateTimeout = setTimeout(() => {
-				dropdown.element.classList.remove('active');
-				dropdown.element.classList.add('deactivate');
-			}, 500);
-		}
-
-		const clearDebounce = () => {
-			dropdown.clickDebounce = false;
-			clearTimeout(dropdown.clickDebounceTimeout);
-		}
-
-		const setDebouce = () => {
-			clearDebounce();
-
-			dropdown.clickDebounce = true;
-
-			dropdown.clickDebounceTimeout = setTimeout(e => {
-				dropdown.clickDebounce = false;
-			}, 250);
-		}
-
-		dropdown.element.addEventListener('mouseenter', e => {
-			if (window.innerWidth > phoneWidth) {
-				setDebouce();
-				activate();
-			}
-		});
-
-		dropdown.element.addEventListener('mouseleave', e => {
-			if (window.innerWidth > phoneWidth) {
-				clearDebounce();
-				deactivate();
-			}
-		});
-		
-		dropdown.element.addEventListener('focusout', e => {
-			if (window.innerWidth > phoneWidth) {
-				if (!dropdown.element.contains(e.relatedTarget)) deactivate();
-			}
-		});
-
-		const dropdownAnchor = dropdown.element.getElementsByTagName('a')[0];
-
-		dropdownAnchor.addEventListener('click', e => {
-			e.preventDefault();
-			if (!dropdown.clickDebounce)
-				dropdown.element.classList.toggle('active');
-		});
-	});
+		.map(element => { return new Dropdown(element, openedDropdown => {
+			dropdowns.forEach(
+				dropdown => {
+					if (dropdown !== openedDropdown) {
+						dropdown.close(true);
+					}
+				}
+			)
+		}) });
+	
+		console.log(dropdowns);
 });
