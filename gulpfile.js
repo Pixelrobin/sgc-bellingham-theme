@@ -1,21 +1,17 @@
 const gulp         = require("gulp");
 const sass         = require("gulp-sass");
-//const babel        = require("gulp-babel");
-const uglify       = require("gulp-uglify");
 const webpack      = require('webpack');
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano      = require("gulp-cssnano");
-const browserSync  = require("browser-sync").create();
+const bs           = require("browser-sync");
 const gulpWebpack  = require('webpack-stream');
 const named        = require('vinyl-named');
 
 gulp.task("sync", () => {
-	browserSync.init({
+	bs.init({
 		proxy: "localhost/wordpress",
-		files: "./**/*",
-		open: false,
 		ghostMode: false,
-		ui: { port: 8081 }
+		ui: { port: 3001 }
 	});
 });
 
@@ -28,7 +24,7 @@ gulp.task("styles", () => {
 		}))
 		.pipe(cssnano())
 		.pipe(gulp.dest("dist/styles"))
-		.pipe(browserSync.stream({match: '**/*.css'}));
+		.pipe(bs.stream());
 });
 
 gulp.task("scripts", () =>
@@ -50,16 +46,16 @@ gulp.task("scripts", () =>
 
 			mode: 'development'
 		}, webpack))
-		//.pipe(babel({ presets: ["env"] }))
-		//.pipe(uglify())
 		.pipe(gulp.dest("dist/scripts"))
 );
 
 gulp.task("watchers", (done) => {
 	gulp.watch(["src/styles/**/*.scss", "src/styles/**/*.css"], gulp.parallel("styles"));
-	gulp.watch(["src/scripts/**/*.js"], gulp.parallel("scripts"));
+	gulp.watch(["src/scripts/**/*.js"], gulp.parallel("scripts")).on('change', bs.reload);
+	gulp.watch("./**/*.php").on("change", bs.reload);
 
 	done();
 })
 
-gulp.task("dev", gulp.series("styles", "scripts", "watchers", "sync"))
+gulp.task("dev", gulp.series("styles", "scripts", "watchers", "sync"));
+//gulp.task("build", )
