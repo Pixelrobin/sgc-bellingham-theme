@@ -9,7 +9,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.26.0",
     "gulp": "next",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",
@@ -23,9 +23,6 @@
   },
   "dependencies": {
     "classlist-polyfill": "^1.2.0",
-    "focus-within": "^2.0.0",
-    "fullcalendar": "^3.9.0",
-    "google-maps": "^3.2.1",
     "promise-polyfill": "^8.0.0",
     "whatwg-fetch": "^2.0.4"
   }
