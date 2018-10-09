@@ -1,6 +1,6 @@
 @import 'material-shadows';
 
-$font-asap: "Asap", cursive;
+$font-asap: "Asap", sans-serif;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
@@ -18,3 +18,5 @@ $input-height: 3.25rem;
 $breakpoint-tablet: 700px;
 $breakpoint-phone: 480px;
 $breakpoint-laptop: 820px;
+
+$ease-sudden: cubic-bezier(0.000, 0.75, 0.000, 1.000);

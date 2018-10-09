@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const navToggle = document.getElementById('main-nav__toggle');
 
 	navToggle.addEventListener('click', e => {
-		nav.classList.toggle('main-nav--expanded');
+		document.body.classList.toggle('js-nav-open');
 	});
 	
 	const dropdowns = Array

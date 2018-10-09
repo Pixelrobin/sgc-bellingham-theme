@@ -44,29 +44,29 @@
 				<nav id="main-nav" class="clearfix main-nav <?php echo ($post_slug == 'home') ? 'main-nav--home' : '' ?>">
 					<?php if ($page_name != NULL): ?><div id="main-nav__title"><?php echo $page_name; ?></div><?php endif ?>
 
-					<?php if ($post_slug != 'home'): ?>
-						<a href="<?php echo get_home_url(); ?>">
-							<img src="<?php echo get_template_directory_uri() . '/media/logo-nav.svg' ?>" class="main-nav__logo">
-						</a>
-					<?php endif; ?>
+					<div class="main-nav__icons">
+						<?php if ($post_slug != 'home'): ?>
+							<a href="<?php echo get_home_url(); ?>">
+								<img src="<?php echo get_template_directory_uri() . '/media/logo-nav.svg' ?>" class="main-nav__logo">
+							</a>
+						<?php endif; ?>
 
-					<div class="main-nav__content">
 						<span id="main-nav__toggle" class="main-nav__toggle feather" data-feather="menu" role="button"></span>
-						
-						<ul class="main-nav__links">
-							<?php wp_nav_menu(
-								array(
-									'menu'        => 'header-menu',
-									'container'   => '',
-									'menu_class'  => '',
-									'depth'       => 2,
-									'items_wrap'  => '%3$s'
-									//'link_before' => '<span>',
-									//'link_after'  => '</span>'
-								)
-							); ?>
-						</ul>
 					</div>
+					
+					<ul class="main-nav__links">
+						<?php wp_nav_menu(
+							array(
+								'menu'        => 'header-menu',
+								'container'   => '',
+								'menu_class'  => '',
+								'depth'       => 2,
+								'items_wrap'  => '%3$s'
+								//'link_before' => '<span>',
+								//'link_after'  => '</span>'
+							)
+						); ?>
+					</ul>
 
 					<!--<a id="live-now" href="#"><span>Live Now</span></a>-->
 				</nav>
