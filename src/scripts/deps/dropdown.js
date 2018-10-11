@@ -1,5 +1,7 @@
 const phoneWidth = '480';
 
+// https://www.w3.org/WAI/tutorials/menus/flyout/
+
 export default class Dropdown {
 	constructor(element, openCallback) {
 		this.element              = element;
@@ -7,6 +9,8 @@ export default class Dropdown {
 		this.clickDebounceTimeout = -1;
 		this.clickDebounce        = false;
 		this.openCallback       = openCallback;
+
+		element.setAttribute('aria-expanded', 'false');
 
 		element.addEventListener('mouseenter', e => {
 			if (window.innerWidth > phoneWidth) {
@@ -39,6 +43,7 @@ export default class Dropdown {
 	open() {
 		clearTimeout(this.deactivateTimeout);
 		this.element.classList.add('active');
+		this.element.setAttribute('aria-expanded', 'true');
 
 		if (typeof this.openCallback === 'function') this.openCallback(this);
 	}
@@ -47,19 +52,26 @@ export default class Dropdown {
 		clearTimeout(this.deactivateTimeout);
 		clearTimeout(this.clickDebounceTimeout);
 
-		if (force) {
+		const closeTask = () => {
 			this.element.classList.remove('active');
 			this.element.classList.add('deactivate');
+			this.element.setAttribute('aria-expanded', 'false');
+		}
+
+		if (force) {
+			closeTask();
 		} else {
-			this.deactivateTimeout = setTimeout(() => {
-				this.element.classList.remove('active');
-				this.element.classList.add('deactivate');
-			}, 500);
+			this.deactivateTimeout = setTimeout(closeTask, 500);
 		}
 	}
 
 	toggle() {
 		this.element.classList.toggle('active');
+
+		this.element.setAttribute(
+			'aria-expanded',
+			this.element.classList.contains('active') ? 'true' : 'false'
+		);
 	}
 
 	clearDebounce() {
