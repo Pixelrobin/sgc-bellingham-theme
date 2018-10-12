@@ -1,6 +1,7 @@
 @import "../deps/meta";
 
 $menu-height: 4rem;
+$menu-height-desktop: 8rem;
 $menu-item-height: 1.5rem;
 $menu-toggle-height: 2rem;
 $menu-logo-height: 3rem;
@@ -84,6 +85,7 @@ header {
 
 		@media screen and (min-width: $breakpoint-phone) {
 			width: auto;
+			height: $menu-height-desktop;
 		}
 	}
 
