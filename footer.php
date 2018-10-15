@@ -73,7 +73,5 @@
 		</footer>
 	</div>
 
-	<script>feather.replace()</script>
-
 	<?php wp_footer(); ?>
 </body>

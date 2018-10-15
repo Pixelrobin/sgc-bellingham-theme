@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "classlist-polyfill": "^1.2.0",
+    "feather-icons": "^4.7.3",
     "promise-polyfill": "^8.0.0",
     "whatwg-fetch": "^2.0.4"
   }

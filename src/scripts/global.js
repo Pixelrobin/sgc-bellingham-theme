@@ -1,8 +1,11 @@
 //import { checkIfStreaming } from './deps/youtubeClient';
 import 'classlist-polyfill';
 import Dropdown from './deps/dropdown.js';
+import feather from 'feather-icons';
 
 document.addEventListener("DOMContentLoaded", () => {
+
+	feather.replace();
 
 	const sgc       = document.getElementById("header__logo__sgc");
 	

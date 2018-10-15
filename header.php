@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/dist/styles/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,700" rel="stylesheet">
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	
 	
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/dist/scripts/<?php echo $script_name ?>.js"></script>
 
