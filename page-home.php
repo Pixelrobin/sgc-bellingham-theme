@@ -5,115 +5,121 @@
 ?>
 
 <?php get_header(); ?>
-	<section id="heading">
-		<div id="heading__slideshow">
-			<div tabindex="0" aria-hidden id="heading__slideshow__left">
-				<span class="feather" data-feather="chevron-left"></span>
-			</div>
-			
-			<?php
-				$args = array(
-					'category_name' => 'slideshow'
-				);
 
-				$posts_query = new WP_Query($args);
-			?>
+<div class="home-hero space-below">
+	<div class="home-hero__content">
+		<h1><?php echo get_bloginfo('name'); ?></h1>
+		<p class="h4"><?php echo get_bloginfo('description'); ?></p>
 
-			<?php if ($posts_query->have_posts()) : ?>
-				<?php while ( $posts_query->have_posts() ) : $posts_query->the_post(); ?>
+		<a href="#" class="button">When & Where</a>
+		<a href="#" class="button">Our Story</a>
+	</div>
 
-					<div
-						class="heading__slideshow__slide"
-						style="background-image: url('<?php
-							if (has_post_thumbnail()) {
-								the_post_thumbnail_url('large');
-							}
-						?>');"
-					>
-						<div class="heading__slideshow__slide__cover"></div>
+	<img src="<?php echo get_template_directory_uri() . '/media/hero.jpg' ?>" alt="The front of Slavic Gospel Church on a sunny day, with people walking through the front door from a parking lot.">
+</div>
 
-						<div class="heading__slideshow__slide__content">
-							<a href="<?php the_permalink() ?>"><h1><?php the_title(); ?></h1></a>
+<div class="home-content space-below">
+	<div class="home-content__main">
+		<h2>Latest News</h2>
 
-							<a href="<?php the_permalink() ?>" class="button button--white">Read more</a>
-						</div>
-					</div>
-				
-				<?php endwhile; ?>
-			<?php endif ?>
-			
-			<div tabindex="0" aria-hidden id="heading__slideshow__right">
-				<span class="feather" data-feather="chevron-right"></span>
-			</div>
-		</div>
-	</section>
+		<div class="home-news space-below">
 
-	<section class="flex-row home-row mb-2">
-		<div id="latest-service" href="#" class="flex-row__item video-thumbnail mb-1" style="flex-basis: 33%;">
-			<div class="video-thumbnail__cover"></div>
-			<div class="video-thumbnail__content">
-				<h1>Latest Video</h1>
-				<p id="latest-service__name" class="text-caption mb-1"></p>
-				<a id="latest-service__link" class="button button--white">Watch now<span class="ml-1" data-feather="play"></span></a>
-			</div>
+			<a class="home-news__item" href="#">
+				<span class="home-news__date">15 JAN 2019</span>
+				<br>
+				<span class="h2">Kid's Camp Signups</span>
+			</a>
+
+			<a class="home-news__item" href="#">
+				<span class="home-news__date">15 JAN 2019</span>
+				<br>
+				<span class="h2">Some Other News Item</span>
+			</a>
+
+			<a class="home-news__item" href="#">
+				<span class="home-news__date">15 JAN 2019</span>
+				<br>
+				<span class="h2">Kid's Camp Signups</span>
+			</a>
+
+			<a class="home-news__item" href="#">
+				<span class="home-news__date">15 JAN 2019</span>
+				<br>
+				<span class="h2">Kid's Camp Signups</span>
+			</a>
+
 		</div>
 
-		<div class="flex-row__item mb-1">
-			<h1 class="mb-1 h2 text-centered">Latest Events</h1>
+		<h2>Latest Videos</h2>
 
-			<?php
-				$upcoming_events = sgc_theme_parse_events(
-					wp_ec_getter_get_results(array(
-						'limit' => 5
-					))
-				);
-
-				global $post;
-			?>
+		<div class="home-videos space-below">
 			
-			<?php if ($upcoming_events): ?>
-				<ul>
-					<?php foreach ($upcoming_events as $post): ?>
-						<?php setup_postdata($post); ?>
+			<a href="#" class="home-videos__item">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&a" alt="#">
+				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
+			</a>
 
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-						
-						<?php /* ?>
-						<a href="<?php the_permalink(); ?>" class="black-link no-decoration">
-							<div class="upcoming-event">
+			<a href="#" class="home-videos__item">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&b" alt="#">
+				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
+			</a>
 
-								<div class="upcoming-event__date">
-									<?php if ($post->sgc_theme_show_date): ?>
-										<span class="text-caption" style="color: white;"><?php echo $post->sgc_theme_date_weekday ?></span>
-										<br>
-										<span class="h1"><?php echo $post->sgc_theme_date_day ?></span>
-									<?php endif ?>
-								</div>
+			<a href="#" class="home-videos__item">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&c" alt="#">
+				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
+			</a>
 
-								<div class="upcoming-event__content">
-									<h1 class="h3" style="font-size: 1.25rem;">
-										<?php
-											$span = '';
-
-											if (!is_null($post->sgc_theme_tag)) {
-												$span = '(' . $post->sgc_theme_tag . ')';
-											}
-
-											echo $post->post_title . ' ' . $span;
-										?>
-									</h1>
-									<p><?php echo $post->sgc_theme_time ?></p>
-								</div>
-							</div>
-						</a>
-
-						<?php */ ?>
-
-					<?php endforeach ?>
-				</ul>
-			<?php endif ?>
-
-			<a href="#" class="button full-width button--blue">Full Calendar</a>
 		</div>
-	</section>
+
+	</div>
+
+	<div class="home-content__sidebar">
+		<h2>Events</h2>
+
+		<div class="home-events">
+		
+			<div class="home-events__item">
+				<span class="home-events__item__date">15 JAN 2019</span>
+				<br>
+				<a href="#" class="home-events__item__title">Event Title</a>
+				<br>
+				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+			</div>
+
+			<div class="home-events__item">
+				<span class="home-events__item__date">15 JAN 2019</span>
+				<br>
+				<a href="#" class="home-events__item__title">Event Title</a>
+				<br>
+				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+			</div>
+
+			<div class="home-events__item">
+				<span class="home-events__item__date">15 JAN 2019</span>
+				<br>
+				<a href="#" class="home-events__item__title">Event Title is Really Long Yes</a>
+				<br>
+				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+			</div>
+
+			<div class="home-events__item">
+				<span class="home-events__item__date">15 JAN 2019</span>
+				<br>
+				<a href="#" class="home-events__item__title">Event Title</a>
+				<br>
+				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+			</div>
+
+			<div class="home-events__item">
+				<span class="home-events__item__date">15 JAN 2019</span>
+				<br>
+				<a href="#" class="home-events__item__title">Event Title</a>
+				<br>
+				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
 <?php get_footer(); ?>

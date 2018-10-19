@@ -163,6 +163,14 @@ button, .button, input[type="button"], input[type="submit"] {
 	&.button--wide {
 		display: block;
 	}
+
+	&.button--expanding {
+		width: 100%;
+
+		@media screen and (min-width: $breakpoint-phone) {
+			width: auto;
+		}
+	}
 }
 
 /* Forms */

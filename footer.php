@@ -1,4 +1,3 @@
-			</div> <?php /* End of page div */ ?>
 		</div>
 		
 		<footer>

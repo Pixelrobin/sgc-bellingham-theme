@@ -9,12 +9,16 @@ $menu-logo-height: 3rem;
 body {
 	padding-top: $menu-height;
 
-	@media screen and (min-width: $breakpoint-phone) {
-		padding-top: 0;
-	}
-
 	&.js-nav-open {
 		overflow: hidden;
+	}
+
+	@media screen and (min-width: $breakpoint-phone) {
+		padding-top: 0;
+
+		&.js-nav-open {
+			overflow: initial;
+		}
 	}
 }
 
@@ -252,9 +256,5 @@ header {
 				}
 			}
 		}
-	}
-
-	&.main-nav--home {
-		background-color: transparent;
 	}
 }
