@@ -6,6 +6,15 @@ $menu-item-height: 1.5rem;
 $menu-toggle-height: 2rem;
 $menu-logo-height: 3rem;
 
+#mobile-nav-height {
+	height: $menu-height;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1000;
+	width: 1px;
+}
+
 body {
 	padding-top: $menu-height;
 
@@ -56,7 +65,7 @@ header {
 	width: 100%;
 	z-index: 1000;
 	//box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-	transition: height 0.4s $ease-sudden;
+	transition: height 0.4s $ease-sudden, top 0.25s, box-shadow 0.5s;
 	overflow: hidden;
 
 	.js-nav-open & {
@@ -65,6 +74,14 @@ header {
 		}
 		
 		height: 100vh;
+	}
+
+	.js-nav-hidden & {
+		top: -$menu-height;
+	}
+
+	&--shadow {
+		box-shadow: $shadow-normal;
 	}
 
 	@media screen and (min-width: $breakpoint-phone) {

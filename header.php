@@ -26,12 +26,12 @@
 </head>
 
 <body>
+	<div id="mobile-nav-height"></div>
+
 	<div id="wrapper">
 		<div id="pre-footer">
 			<header>
 				<nav id="main-nav" class="clearfix main-nav <?php echo ($post_slug == 'home') ? 'main-nav--home' : '' ?>">
-					<!--<?php if ($page_name != NULL): ?><div id="main-nav__title"><?php echo $page_name; ?></div><?php endif ?>-->
-
 					<div class="main-nav__icons">
 						<a href="<?php echo get_home_url(); ?>">
 							<img src="<?php echo get_template_directory_uri() . '/media/logo-nav.svg' ?>" class="main-nav__logo">
@@ -53,7 +53,5 @@
 							)
 						); ?>
 					</ul>
-
-					<!--<a id="live-now" href="#"><span>Live Now</span></a>-->
 				</nav>
 			</header>

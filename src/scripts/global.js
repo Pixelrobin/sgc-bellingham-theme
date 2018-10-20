@@ -2,68 +2,39 @@
 import 'classlist-polyfill';
 import Dropdown from './deps/dropdown.js';
 import feather from 'feather-icons';
+const throttle = require('lodash/throttle');
 
 document.addEventListener("DOMContentLoaded", () => {
 
 	feather.replace();
-
-	const sgc       = document.getElementById("header__logo__sgc");
 	
-	
-	// --- Logo ---
+	// --- Nav --- //
 
-	/*var lastSize = 0;
-	var ticking = false;
-
-	function handleResize() {
-		const width = window.innerWidth;
-		if (width < 580) {
-			if (sgc.innerText !== "SGC") sgc.innerText = "SGC";
-		} else if (sgc.innerText !== "Slavic Gospel Chruch") {
-			sgc.innerText = "Slavic Gospel Church";
-		}
-	}
-
-	window.addEventListener('resize', e => {
-			if (!ticking) {
-				window.requestAnimationFrame(function() {
-				handleResize();
-				ticking = false;
-			});
-
-			ticking = true;
-		}
-	});*/
-
-	
-	// --- Youtube ---
-
-	/*checkIfStreaming(data => {
-		if (data.streaming) {
-			const navUL = nav.getElementsByTagName('ul')[0];
-
-			const item   = document.createElement('li');
-			const anchor = document.createElement('a');
-			const span   = document.createElement('span');
-
-			span.innerText = 'Live Now';
-			anchor.href    = 'https://www.youtube.com/watch?v=' + data.id;
-			item.className = 'menu-item live';
-
-			anchor.appendChild(span);
-			item.appendChild(anchor);
-			
-			navUL.insertBefore(item, navToggle.nextElementSibling);
-
-			navToggle.classList.add('live');
-		}
-	});*/
-
-	
-	// --- Nav ---
-
+	const navHeight = document.getElementById('mobile-nav-height');
 	const nav       = document.getElementById('main-nav');
 	const navToggle = document.getElementById('main-nav__toggle');
+
+	const mobileNavHeight = navHeight.clientHeight;
+	let lastScrollPos = 0;
+
+	const updateNav = (e) => {
+		const currentScrollPos = window.pageYOffset;
+
+
+		if (currentScrollPos > lastScrollPos) {
+			if (currentScrollPos > mobileNavHeight) {
+				document.body.classList.add('js-nav-hidden');
+			}
+		} else document.body.classList.remove('js-nav-hidden');
+
+		if (currentScrollPos > mobileNavHeight) {
+			nav.classList.add('main-nav--shadow');
+		} else nav.classList.remove('main-nav--shadow');
+
+		lastScrollPos = currentScrollPos;
+	}
+
+	window.addEventListener('scroll', throttle(updateNav, 100));
 
 	navToggle.addEventListener('click', e => {
 		document.body.classList.toggle('js-nav-open');
@@ -80,4 +51,4 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			)
 		}) });
-});	
+});

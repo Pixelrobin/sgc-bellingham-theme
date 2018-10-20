@@ -27,25 +27,25 @@
 			<a class="home-news__item" href="#">
 				<span class="home-news__date">15 JAN 2019</span>
 				<br>
-				<span class="h2">Kid's Camp Signups</span>
+				<span class="h3">Kid's Camp Signups</span>
 			</a>
 
 			<a class="home-news__item" href="#">
 				<span class="home-news__date">15 JAN 2019</span>
 				<br>
-				<span class="h2">Some Other News Item</span>
+				<span class="h3">Some Other News Item</span>
 			</a>
 
 			<a class="home-news__item" href="#">
 				<span class="home-news__date">15 JAN 2019</span>
 				<br>
-				<span class="h2">Kid's Camp Signups</span>
+				<span class="h3">Kid's Camp Signups</span>
 			</a>
 
 			<a class="home-news__item" href="#">
 				<span class="home-news__date">15 JAN 2019</span>
 				<br>
-				<span class="h2">Kid's Camp Signups</span>
+				<span class="h3">Kid's Camp Signups</span>
 			</a>
 
 		</div>
@@ -55,17 +55,17 @@
 		<div class="home-videos space-below">
 			
 			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&a" alt="#">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&a" alt="#">
 				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
 			</a>
 
 			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&b" alt="#">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&b" alt="#">
 				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
 			</a>
 
 			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x480/?church&c" alt="#">
+				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&c" alt="#">
 				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
 			</a>
 

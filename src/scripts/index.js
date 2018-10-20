@@ -2,6 +2,7 @@ import './global.js';
 import { getLatestVideo, checkIfStreaming } from './deps/youtubeClient';
 import Tinyshow from './deps/tinyshow';
 
+/*
 document.addEventListener("DOMContentLoaded", () => {
 
 	// Youtube stuff
@@ -35,4 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	previousButton.addEventListener('click', () => { show.changeSlide(-1); });
 	nextButton.addEventListener('click', () => { show.changeSlide(1); });
-});
+});*/
