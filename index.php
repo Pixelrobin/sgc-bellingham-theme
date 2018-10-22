@@ -1,35 +1,23 @@
 <?php get_header(); ?>
-	<?php $post_iterator = 0; ?>
 
-	<?php if (have_posts()): while (have_posts()): the_post(); ?>
-		<?php
-			$thumb = has_post_thumbnail();
-			$single = is_singular();
-		?>
+<h1 class="text-centered"><?php echo single_post_title(); ?></h1>
 
-		<section class="blog-post <?php echo $thumb ? 'blog-post--with-thumbnail' : ''; ?> <?php echo $single ? '' : 'blog-post--preview'; ?>">
-			<article>
-				<?php if ($thumb): ?>
-					<div class="blog-post__thumbnail" style="background-image: url(<?php the_post_thumbnail_url($single ? 'large' : 'medium_large'); ?>);"></div>
-					<?php $post_iterator ++; ?>
-				<?php endif; ?>
+<div class="page space-below">
+	<?php if (have_posts()): while(have_posts()): the_post(); ?>
+		<article class="space-below">
+			<header>
+				<span class="post-date"><?php the_date(); ?></span>
+				<a class="anchor--hidden" href="<?php the_permalink(); ?>"><h1><?php the_title(); ?></h1></a>
+			</header>
+			<?php the_content(); ?>
+		</article>
 
-				<div class="blog-post__content">
-					<?php if ($single) yoast_breadcrumb('<p id="breadcrumbs">','</p>'); ?>
-					
-					<h1><?php the_title(); ?></h1>
-					<p class="text-bold"><?php the_date(); ?></p>
+	<?php endwhile; ?>
 
-					<?php $single ? the_content() : the_excerpt(); ?>
-					
-					<?php if (!$single): ?>
-						<a href="<?php the_permalink(); ?>" class="button blog-post__read-more">Read More</a>
-					<?php endif ?>
-				</div>
-			</article>
-		</section>
+	<?php sgc_theme_previous_posts_link(); ?>
+	<?php sgc_theme_next_posts_link(); ?>
 
-	<?php endwhile; else: ?>
-		<h1>Nothing Found</h1>
-<?php endif; ?>
+	<?php endif; ?>
+</div>
+
 <?php get_footer(); ?>

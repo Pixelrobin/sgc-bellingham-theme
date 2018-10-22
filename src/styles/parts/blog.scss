@@ -1,50 +1,9 @@
 @import "../deps/meta";
 
-.blog-post {
-	margin-bottom: 4rem;
-
-	&.blog-post--with-thumbnail {
-		width: 100%;
-	}
-
-	.blog-post__thumbnail {
-		min-height: 20rem;
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-		flex: 1;
-	}
-
-	.blog-post__content {
-		flex: 1;
-		padding-top: 2rem;
-	}
-
-	article {
-		&.blog-post__article--reversed {
-			flex-direction: row-reverse;
-		}
-	}
-
-	&.blog-post--preview {
-		article {
-			@media screen and (min-width: $breakpoint-tablet) {
-				display: flex;
-			}
-		}
-
-		.blog-post__content {
-			@media screen and (min-width: $breakpoint-tablet) {
-				padding: 2rem;
-			}
-		}
-	}
-
-	.blog-post__read-more {
-		width: 100%;
-
-		@media screen and (min-width: $breakpoint-phone) {
-			width: auto;
-		}
-	}
+.post-date {
+	display: block;
+	font-weight: $font-weight-bold;
+	margin-bottom: 0.5rem;
+	color: $color-lightgray;
+	text-transform: uppercase;
 }

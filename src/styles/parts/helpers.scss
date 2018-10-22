@@ -12,7 +12,7 @@
 }
 
 .text-bold {
-	font-weight: bold;
+	font-weight: $font-weight-bold;
 }
 
 .no-decoration {
@@ -40,8 +40,7 @@ a.black-link {
 	}
 }
 
-a.link-inherit {
-	color: inherit;
+a.anchor--hidden {
 	text-decoration: none;
 
 	&:hover { text-decoration: underline; }
@@ -94,40 +93,4 @@ a.link-inherit {
 
 .space-below {
 	margin-bottom: 4rem;
-}
-
-$mp-props: m p;
-$mp-sides: t b l r;
-
-$mp-props-f: margin padding;
-$mp-sides-f: top bottom left right;
-
-// https://css-tricks.com/snippets/sass/power-function/
-@function pow($number, $exponent) {
-	$value: 1;
-  
-	@if $exponent > 0 {
-	  @for $i from 1 through $exponent {
-		$value: $value * $number;
-	  }
-	}
-  
-	@return $value;
-  }
-
-@for $p from 1 through 2 {
-	@for $m from 0 through 6 {
-		.#{nth($mp-props, $p)}-#{$m} {
-			#{nth($mp-props-f, $p)}: $m * 1rem;
-		}
-	}
-
-
-	@for $m from 0 through 6 {
-		@for $s from 1 through 4 {
-			.#{nth($mp-props, $p)}#{nth($mp-sides, $s)}-#{$m} {
-				#{nth($mp-props-f, $p)}-#{nth($mp-sides-f, $s)}: $m * 1rem;
-			}
-		}
-	}
 }

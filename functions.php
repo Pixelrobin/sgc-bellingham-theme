@@ -1,6 +1,5 @@
 <?php
 add_action( 'after_setup_theme', 'register_my_menu' );
-add_theme_support('post-thumbnails');
 
 function register_my_menu() {
 	register_nav_menu( 'header', 'Header Menu' );
@@ -49,4 +48,33 @@ function sgc_theme_date_from_params() {
 	} else return null;
 
 	return $date;
+}
+
+// Based on https://core.trac.wordpress.org/browser/tags/4.9.8/src/wp-includes/link-template.php#L2207
+function sgc_theme_next_posts_link() {
+	global $paged, $wp_query;
+
+	$max_page = $wp_query->max_num_pages;
+	if (!$paged) $paged = 1;
+
+	$nextpage = intval($paged) + 1;
+
+	if (!is_single() && ($nextpage <= $max_page)) {
+		echo '<a class="button button--expanding" href="' . next_posts($max_page, false) . '">'
+		. 'Older Posts '
+		. '<span class="feather" data-feather="arrow-right"></span>'
+		. '</a>';
+	}
+}
+
+// Based on https://core.trac.wordpress.org/browser/tags/4.9.8/src/wp-includes/link-template.php#L2298
+function sgc_theme_previous_posts_link() {
+	global $paged;
+	
+	if (!is_single() && $paged > 1) {
+		echo '<a class="button button--expanding" href="' . previous_posts(false) . '">'
+		. '<span class="feather" data-feather="arrow-left"></span>'
+		. ' Newer Posts'
+		. '</a>';
+	}
 }
