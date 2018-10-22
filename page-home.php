@@ -20,35 +20,26 @@
 
 <div class="home-content space-below">
 	<div class="home-content__main">
-		<h2>Latest News</h2>
+		<?php $news_query = sgc_theme_home_posts_query() ?>
 
-		<div class="home-news space-below">
+		<?php if ($news_query->have_posts()): ?>
 
-			<a class="home-news__item" href="#">
-				<span class="home-news__date">15 JAN 2019</span>
-				<br>
-				<span class="h3">Kid's Camp Signups</span>
-			</a>
+			<h2>Latest News</h2>
 
-			<a class="home-news__item" href="#">
-				<span class="home-news__date">15 JAN 2019</span>
-				<br>
-				<span class="h3">Some Other News Item</span>
-			</a>
+			<div class="home-news space-below">
 
-			<a class="home-news__item" href="#">
-				<span class="home-news__date">15 JAN 2019</span>
-				<br>
-				<span class="h3">Kid's Camp Signups</span>
-			</a>
+				<?php while ($news_query->have_posts()): $news_query->the_post(); ?>
+					<a class="home-news__item" href="#">
+						<span class="home-news__item__date">15 JAN 2019</span>
+						<span class="h3"><?php the_title(); ?></span>
+					</a>
+				<?php endwhile; ?>
 
-			<a class="home-news__item" href="#">
-				<span class="home-news__date">15 JAN 2019</span>
-				<br>
-				<span class="h3">Kid's Camp Signups</span>
-			</a>
+				<a href="#" class="button">More News</a>
 
-		</div>
+			</div>
+
+		<?php endif; ?>
 
 		<h2>Latest Videos</h2>
 

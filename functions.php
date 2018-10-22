@@ -7,6 +7,15 @@ function register_my_menu() {
 	register_nav_menu( 'test', 'Test Menu' );
 }
 
+function sgc_theme_home_posts_query() {
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => 4
+	);
+
+	return new WP_Query($args);
+}
+
 function sgc_theme_parse_events($posts, $from = null, $to = null) {
 	if (is_null($from)) $from = new DateTime();
 

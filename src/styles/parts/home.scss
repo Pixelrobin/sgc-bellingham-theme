@@ -78,13 +78,18 @@ $content-width: $main-width + $sidebar-gap + $sidebar-width + ($content-padding 
 
 	&__item {
 		display: block;
-		padding: 2rem;
+		padding: 1.5rem;
 		background-color: $color-gray;
 		color: white;
 		text-decoration: none;
 		border-radius: $radius-small;
 		margin-bottom: 1rem;
 		transition: box-shadow 0.25s, background-color 0.25s;
+
+		&__date {
+			display: block;
+			margin-bottom: 0.25rem;
+		}
 
 		@media screen and (min-width: $breakpoint-tablet) {
 			width: calc(50% - 0.5rem);
