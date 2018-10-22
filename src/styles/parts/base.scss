@@ -128,6 +128,17 @@ button, .button, input[type="button"], input[type="submit"] {
 		box-shadow: none;
 	}
 
+	&.button--reset, &.button--reset:hover {
+		background-color: transparent;
+		color: inherit;
+		line-height: initial;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		box-shadow: none;
+	}
+
 	&.button--blue {
 		background-color: $color-blue;
 

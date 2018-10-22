@@ -7,6 +7,18 @@ const throttle = require('lodash/throttle');
 document.addEventListener("DOMContentLoaded", () => {
 
 	feather.replace();
+
+	// --- Notification --- //
+	
+	const topNotification = document.getElementById('top-notification');
+
+	if (topNotification) {
+		const close = document.getElementById('top-notification__close');
+
+		close.addEventListener('click', e => {
+			topNotification.parentElement.removeChild(topNotification);
+		});
+	}
 	
 	// --- Nav --- //
 

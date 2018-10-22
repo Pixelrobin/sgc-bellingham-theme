@@ -6,6 +6,8 @@
 	global $page_name;
 
 	if ($script_name == NULL) $script_name = 'global';
+
+	$stream_link = sgc_youtube_is_streaming();
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,18 @@
 	<div id="wrapper">
 		<div id="pre-footer">
 			<header>
-				<nav id="main-nav" class="clearfix main-nav <?php echo ($post_slug == 'home') ? 'main-nav--home' : '' ?>">
+
+				<?php if ($stream_link): ?>
+					<div id="top-notification" class="top-notification">
+						<a href="<?php echo $stream_link; ?>">We're Live! Click to watch now on YouTube.</a>
+						<button id="top-notification__close" class="top-notification__close button--reset" aria-label="Close notification">
+							<span class="feather" data-feather="x"></span>
+						</button>
+					</div>
+				<?php endif; ?>
+
+				<nav id="main-nav" class="clearfix main-nav">
+					
 					<div class="main-nav__icons">
 						<a href="<?php echo get_home_url(); ?>">
 							<img src="<?php echo get_template_directory_uri() . '/media/logo-nav.svg' ?>" class="main-nav__logo">

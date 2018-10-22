@@ -35,6 +35,34 @@ header {
 	position: relative;
 }
 
+.top-notification {
+	display: block;
+	text-decoration: none;
+	background-color: $color-red;
+	color: white;
+	margin: 0;
+	padding: 1rem;
+	font-weight: $font-weight-bold;
+	text-align: center;
+
+	@media screen and (min-width: $breakpoint-tablet) {
+		padding: 0.5rem;
+	}
+
+	&__close {
+		float: right;
+		display: none;
+
+		@media screen and (min-width: $breakpoint-phone) {
+			display: block;
+		}
+
+		.feather {
+			color: white;
+		}
+	}
+}
+
 #header-hero {
 	width: 100%;
 	background-position: center;

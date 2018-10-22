@@ -53,22 +53,15 @@
 		<h2>Latest Videos</h2>
 
 		<div class="home-videos space-below">
+
+			<?php $videos = sgc_youtube_get_latest_videos(3); ?>
 			
-			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&a" alt="#">
-				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
-			</a>
-
-			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&b" alt="#">
-				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
-			</a>
-
-			<a href="#" class="home-videos__item">
-				<img class="home-videos__item__thumb" src="https://source.unsplash.com/640x400/?church&c" alt="#">
-				<span class="home-videos__item__name">October 11, 2018 | Thursday Service</span>
-			</a>
-
+			<?php foreach ($videos as $video): ?>
+				<a href="#" class="home-videos__item">
+					<img class="home-videos__item__thumb" src="<?php echo $video->snippet->thumbnails->medium->url; ?>" alt="">
+					<span class="home-videos__item__name"><?php echo $video->snippet->title; ?></span>
+				</a>
+			<?php endforeach; ?>
 		</div>
 
 	</div>
