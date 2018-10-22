@@ -30,7 +30,7 @@
 
 				<?php while ($news_query->have_posts()): $news_query->the_post(); ?>
 					<a class="home-news__item" href="#">
-						<span class="home-news__item__date">15 JAN 2019</span>
+						<span class="home-news__item__date"><?php the_date(); ?></span>
 						<span class="h3"><?php the_title(); ?></span>
 					</a>
 				<?php endwhile; ?>
