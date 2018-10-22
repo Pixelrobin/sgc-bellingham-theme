@@ -1,29 +1,42 @@
 @import '../deps/meta';
 
 footer {
-	background-color: whitesmoke;
+	background-color: $color-gray;
 	position: relative;
+	color: white;
 	display: block;
 	width: 100%;
-	padding: 4rem 2rem;
+	padding: 4rem 4rem;
 }
 
-.footer-row {
-	display: block;
+.footer-columns__item {
+	margin-bottom: 4rem;
+}
 
-	@media screen and (min-width: 720px) {
+@media screen and (min-width: $breakpoint-tablet) {
+	.footer-columns {
 		display: flex;
+		flex-wrap: wrap;
+
+		&__item {
+			margin-right: 4rem;
+	
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 	}
-}
 
-.service-times .flex-row__item {
-	flex-basis: 100%;
+	.footer-times {
+		display: flex;
+		flex-wrap: wrap;
 
-	@media screen and (min-width: 400px) {
-		flex-basis: 50%;
-	}
+		&__item {
+			margin-right: 2rem;
 
-	@media screen and (min-width: 1000px) {
-		flex-basis: 33.333%;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 	}
 }

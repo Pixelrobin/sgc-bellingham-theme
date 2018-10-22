@@ -1,74 +1,47 @@
 		</div>
 		
 		<footer>
-			<div class="page flex-row footer-row mb-4">
-				<div class="flex-row__item text-centered mb-3" style="flex-grow: 1;">
-					<h1 class="h2">Our Location</h1>
 
-					<p class="full-width mb-1">276 Harvest Way,<br>Bellingham, WA 98226</p>
-					<a href="#" class="button button--white m-0">View on map</a>
+			<div class="footer-columns">
+				<div class="footer-columns__item">
+					<h2>Location</h2>
+
+					<p>
+						<span class="text-bold">Slavic Gospel Church</span><br>
+						276 Harvest Way,<br>
+						Bellingham, WA 98226
+					</p>
+
+					<a href="#" class="button button--white">Directions</a>
 				</div>
 
-				<div class="flex-row__item" style="flex-grow: 3;">
+				<div class="footer-columns__item">
+					<h2>Service Times</h2>
 
-					<div class="flex-row service-times">
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Sunday</h1>
-							
-							<p>
-								Morning: <span class="text-bold">10:00 AM</span><br>
-								Evening: <span class="text-bold">6:00 PM</span><br>
-							</p>
-						</div>
+					<div class="footer-times">
+						<p class="footer-times__item">
+							<span class="text-bold">Sunday:</span><br>
+							Morning Service: 10 AM<br>
+							Evening Service: 5 PM
+						</p>
 
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Monday</h1>
-							
-							<p>
-								Main Choir: <span class="text-bold">7:00 PM</span><br>
-								Prayer: <span class="text-bold">7:00 PM</span><br>
-							</p>
-						</div>
+						<p class="footer-times__item">
+							<span class="text-bold">Thursday:</span><br>
+							Prayer Service: 7:00 PM
+						</p>
 
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Tuesday</h1>
-							
-							<p>
-								Youth Prayer: <span class="text-bold">7:15 PM</span><br>
-							</p>
-						</div>
-
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Wednesday</h1>
-
-							<p>
-								Teen Bible School: <span class="text-bold">7:00 PM</span><br>
-								Bible Study: <span class="text-bold">7:00 PM</span><br>
-								Youth Choir: <span class="text-bold">7:30 PM</span><br>
-							</p>
-						</div>
-
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Thursday</h1>
-							
-							<p>
-								Prayer Service: <span class="text-bold">7:00 PM</span><br>
-								Russian School: <span class="text-bold">7:00 PM</span><br>
-							</p>
-						</div>
-
-						<div class="flex-row__item mb-3 text-centered">
-							<h1 class="h2">Friday</h1>
-							
-							<p>
-								Youth Service: <span class="text-bold">7:00 PM</span><br>
-							</p>
-						</div>
+						<p class="footer-times__item">
+							<span class="text-bold">Friday:</span><br>
+							Youth Service: 7:30 PM
+						</p>
 					</div>
+
+					<a href="#" class="button button--white">More Times</a>
 				</div>
 			</div>
 
-			<p class="text-centered full-width m0">Copyright Slavic Gospel Church 2018</p>
+			<span>Copyright 2018</span>
+
 		</footer>
 	</div>
 
