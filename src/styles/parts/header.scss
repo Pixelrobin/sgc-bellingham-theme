@@ -44,11 +44,6 @@ header {
 	padding: 1rem;
 	font-weight: $font-weight-bold;
 	text-align: center;
-	margin-bottom: 2rem;
-
-	@media screen and (min-width: $breakpoint-phone) {
-		margin-bottom: 0;
-	}
 
 	@media screen and (min-width: $breakpoint-tablet) {
 		padding: 0.5rem;

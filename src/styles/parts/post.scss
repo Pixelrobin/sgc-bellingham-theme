@@ -7,3 +7,12 @@
 	color: $color-lightgray;
 	text-transform: uppercase;
 }
+
+.post-title {
+	text-align: center;
+	margin-top: 2rem;
+
+	@media screen and (min-width: $breakpoint-phone) {
+		margin-top: 0;
+	}
+}

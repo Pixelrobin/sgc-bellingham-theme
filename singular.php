@@ -7,7 +7,7 @@
 		<span class="post-date text-centered"><?php the_date(); ?></span>
 	<?php endif; ?>
 
-	<h1 class="text-centered"><?php the_title(); ?></h1>
+	<h1 class="post-title"><?php the_title(); ?></h1>
 
 	<div class="page">
 		<?php the_content(); ?>
