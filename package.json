@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Michael Savchuk",
   "license": "MIT",
+  "scripts": {
+    "dev": "gulp dev"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
