@@ -44,8 +44,8 @@ function sgc_theme_date_from_params() {
 	if ($date !== false) {
 		$date_errors = DateTime::getLastErrors();
 
-		if (!empty($date_errors['warning_count'])) return null;
-	} else return null;
+		if (!empty($date_errors['warning_count'])) return false;
+	} else return false;
 
 	return $date;
 }
@@ -77,4 +77,16 @@ function sgc_theme_previous_posts_link() {
 		. ' Newer Posts'
 		. '</a>';
 	}
+}
+
+function sgc_theme_get_event_time_range($event_info) {
+	$start_time = $event_info['start_time'];
+	$end_time = $event_info['end_time'];
+	
+	if ($start_time) {
+		if ($end_time) {
+			return $start_time . ' - ' . $end_time;
+		} else return $start_time;
+	} else if ($end_time) return 'Ends at ' . $end_time;
+	else return '';
 }

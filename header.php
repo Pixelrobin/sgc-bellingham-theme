@@ -3,7 +3,6 @@
 	$post_slug  = $post->post_name;
 
 	global $script_name;
-	global $page_name;
 
 	if ($script_name == NULL) $script_name = 'global';
 

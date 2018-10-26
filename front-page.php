@@ -60,49 +60,31 @@
 	<div class="home-content__sidebar">
 		<h2>Events</h2>
 
-		<div class="home-events">
-		
-			<div class="home-events__item">
-				<span class="home-events__item__date">15 JAN 2019</span>
-				<br>
-				<a href="#" class="home-events__item__title">Event Title</a>
-				<br>
-				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
-			</div>
+		<?php $events_query = sgc_event_get_upcoming_query(4); ?>
 
-			<div class="home-events__item">
-				<span class="home-events__item__date">15 JAN 2019</span>
-				<br>
-				<a href="#" class="home-events__item__title">Event Title</a>
-				<br>
-				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
-			</div>
+		<?php if ($events_query->have_posts()): ?>
+			
+			<div class="events events--home">
+				
+				<?php while ($events_query->have_posts()): $events_query->the_post(); ?>
+					<?php $event_info = sgc_event_get_event_info(get_the_ID()); ?>
 
-			<div class="home-events__item">
-				<span class="home-events__item__date">15 JAN 2019</span>
-				<br>
-				<a href="#" class="home-events__item__title">Event Title is Really Long Yes</a>
-				<br>
-				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
-			</div>
-
-			<div class="home-events__item">
-				<span class="home-events__item__date">15 JAN 2019</span>
-				<br>
-				<a href="#" class="home-events__item__title">Event Title</a>
-				<br>
-				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
-			</div>
-
-			<div class="home-events__item">
-				<span class="home-events__item__date">15 JAN 2019</span>
-				<br>
-				<a href="#" class="home-events__item__title">Event Title</a>
-				<br>
-				<span class="home-events__item__time">6:00 PM - 8:00 PM</span>
+					<div class="events__item">
+						<span class="events__item__date"><?php echo $event_info['date']; ?></span>
+						<br>
+						<a href="#" class="events__item__title"><?php echo get_the_title();?></a>
+						<br>
+						<span class="events__item__time"><?php echo sgc_theme_get_event_time_range($event_info); ?></span>
+					</div>
+				<?php endwhile; ?>
+			
 			</div>
 		
-		</div>
+		<?php else: ?>
+			<p class="text-bold light-gray">Nothing coming up yet.</p>
+		<?php endif; ?>
+
+		<a href="#" class="button">Full Calendar</a>
 	</div>
 </div>
 

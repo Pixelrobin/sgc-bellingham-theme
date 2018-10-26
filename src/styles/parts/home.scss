@@ -1,13 +1,5 @@
 @import "../deps/meta";
 
-$hero-width: 100rem;
-$main-width: 50rem;
-$sidebar-width: 10rem;
-$sidebar-gap: 4rem;
-
-$content-padding: 2rem;
-$content-width: $main-width + $sidebar-gap + $sidebar-width + ($content-padding * 4);
-
 .home-hero {
 	background-color: $color-skyblue;
 	width: 100%;
@@ -60,7 +52,7 @@ $content-width: $main-width + $sidebar-gap + $sidebar-width + ($content-padding 
 
 	margin: 0 auto;
 
-	@media screen and (min-width: $content-width) {
+	@media screen and (min-width: $content-trigger) {
 		display: grid;
 		grid-template-columns: $main-width $sidebar-width;
 		grid-gap: $sidebar-gap;
@@ -156,32 +148,5 @@ $content-width: $main-width + $sidebar-gap + $sidebar-width + ($content-padding 
 		}
 
 		&:hover { text-decoration: underline; }
-	}
-}
-
-.home-events {
-	display: flex;
-	margin: 0 -1rem;
-	flex-wrap: wrap;
-
-	&__item {
-		font-weight: $font-weight-bold;
-		margin: 0 1rem;
-		margin-bottom: 2rem;
-		max-width: $sidebar-width * 1.5;
-		text-decoration: none;
-
-		&__date {
-			color: $color-lightgray;
-		}
-
-		&__title {
-			line-height: 1.5;
-			font-size: 1.75rem;
-		}
-
-		&__time	{
-			color: $color-blue;
-		}
 	}
 }
