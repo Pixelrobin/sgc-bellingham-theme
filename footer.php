@@ -12,7 +12,7 @@
 							Bellingham, WA 98226
 						</p>
 
-						<a href="#" class="button button--white">Directions</a>
+						<a href="https://goo.gl/maps/5vTvs2bz2b22" class="button button--white">View on Map</a>
 					</div>
 
 					<div class="footer-columns__item">
@@ -36,7 +36,7 @@
 							</p>
 						</div>
 
-						<a href="#" class="button button--white">More Times</a>
+						<a href="<?php echo get_permalink(get_page_by_title('When & Where')); ?>" class="button button--white">More Times</a>
 					</div>
 				</div>
 

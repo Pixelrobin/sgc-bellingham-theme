@@ -2,8 +2,8 @@
 add_action( 'after_setup_theme', 'register_my_menu' );
 
 function register_my_menu() {
-	register_nav_menu( 'header', 'Header Menu' );
-	register_nav_menu( 'test', 'Test Menu' );
+	register_nav_menu('header', 'Header Menu');
+	register_nav_menu('hero', 'Hero Banner Links');
 }
 
 function sgc_theme_home_posts_query() {
@@ -90,3 +90,10 @@ function sgc_theme_get_event_time_range($event_info) {
 	} else if ($end_time) return 'Ends at ' . $end_time;
 	else return '';
 }
+
+function sgc_theme_menu_link_atts( $atts, $item, $args ) {
+	if ($args->menu === 'hero') $atts['class'] = 'button';
+	return $atts;
+}
+
+add_filter( 'nav_menu_link_attributes', 'sgc_theme_menu_link_atts', 10, 3 );

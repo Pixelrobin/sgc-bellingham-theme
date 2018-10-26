@@ -11,15 +11,27 @@
 		<h1><?php echo get_bloginfo('name'); ?></h1>
 		<p class="h4"><?php echo get_bloginfo('description'); ?></p>
 
-		<a href="#" class="button">When & Where</a>
-		<a href="#" class="button">Our Story</a>
+		<?php
+			$cta_items = wp_nav_menu(
+				array(
+					'menu'        => 'hero',
+					'container'   => false,
+					'menu_class'  => false,
+					'depth'       => 1,
+					'echo'        => false,
+					'items_wrap'  => '%3$s'
+				)
+			);
+
+			echo strip_tags($cta_items, '<a>' );
+		?>
 	</div>
 
 	<img src="<?php echo get_template_directory_uri() . '/media/hero.jpg' ?>" alt="The front of Slavic Gospel Church on a sunny day, with people walking through the front door from a parking lot.">
 </div>
 
 <div class="home-content space-below">
-	<div class="home-content__main">
+	<div class="home-content__main space-below">
 		<?php $news_query = sgc_theme_home_posts_query() ?>
 
 		<?php if ($news_query->have_posts()): ?>
@@ -35,7 +47,7 @@
 					</a>
 				<?php endwhile; ?>
 
-				<a href="#" class="button">More News</a>
+				<a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="button">More News</a>
 
 			</div>
 
@@ -43,7 +55,7 @@
 
 		<h2>Latest Videos</h2>
 
-		<div class="home-videos space-below">
+		<div class="home-videos">
 
 			<?php $videos = sgc_youtube_get_latest_videos(3); ?>
 			
@@ -54,6 +66,8 @@
 				</a>
 			<?php endforeach; ?>
 		</div>
+
+		<a href="https://www.youtube.com/channel/UCr9ZBVBy9DfGs-NAgL5gu1Q" class="button">More Videos</a>
 
 	</div>
 
@@ -84,7 +98,7 @@
 			<p class="text-bold light-gray">Nothing coming up yet.</p>
 		<?php endif; ?>
 
-		<a href="#" class="button">Full Calendar</a>
+		<a href="<?php echo get_permalink(get_page_by_title('Calendar')); ?>" class="button">Full Calendar</a>
 	</div>
 </div>
 
