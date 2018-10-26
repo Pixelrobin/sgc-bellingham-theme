@@ -208,6 +208,8 @@ header {
 				&:hover, &:focus { color: $color-blue; }
 			}
 
+			&.current_page_item a { color: $color-blue; }
+
 			&.menu-item-has-children {
 				& > a::after {
 					content: "▼";
