@@ -1,9 +1,10 @@
 <?php
-add_action( 'after_setup_theme', 'register_my_menu' );
+add_action( 'after_setup_theme', 'sgc_theme_setup' );
 
-function register_my_menu() {
+function sgc_theme_setup() {
 	register_nav_menu('header', 'Header Menu');
 	register_nav_menu('hero', 'Hero Banner Links');
+	add_theme_support( 'title-tag' );
 }
 
 function sgc_theme_home_posts_query() {
