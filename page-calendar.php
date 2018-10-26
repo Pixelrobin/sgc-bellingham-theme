@@ -33,7 +33,7 @@
 				<div class="events__item">
 					<span class="events__item__date"><?php echo $event_info['date']; ?></span>
 					<br>
-					<a href="#" class="events__item__title"><?php echo get_the_title();?></a>
+					<a href="<?php the_permalink(); ?>" class="events__item__title"><?php echo get_the_title();?></a>
 					<br>
 					<span class="events__item__time"><?php echo sgc_theme_get_event_time_range($event_info); ?></span>
 				</div>
