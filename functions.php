@@ -16,25 +16,6 @@ function sgc_theme_home_posts_query() {
 	return new WP_Query($args);
 }
 
-function sgc_theme_parse_events($posts, $from = null, $to = null) {
-	if (is_null($from)) $from = new DateTime();
-
-	foreach ($posts as $post) {
-		$start_date  = DateTime::createFromFormat('Y-m-d H:i:s', $post->start_date);
-		$end_date    = DateTime::createFromFormat('Y-m-d H:i:s', $post->end_date);
-		$single_day  = $start_date->diff($end_date);
-
-		$single_day = $single_day->format('%a') == '0';
-
-		$post->sgc_theme_date_range = $start_date->format('F Y') . ' &#8211; ' . $end_date->format('F Y');
-		$post->sgc_theme_time_range = $single_day
-			? 'All Day'
-			: $start_date->format('g:H A') . ' &#8211; ' . $end_date->format('g:H A');
-	}
-
-	return $posts;
-}
-
 function sgc_theme_date_from_params() {
 	$month = $_GET['month'];
 	$year  = $_GET['year'];
