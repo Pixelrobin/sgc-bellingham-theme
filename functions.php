@@ -17,11 +17,11 @@ function sgc_theme_home_posts_query() {
 }
 
 function sgc_theme_date_from_params() {
-	$month = $_GET['month'];
-	$year  = $_GET['year'];
+	$month = $_GET['calendar_month'];
+	$year  = $_GET['calendar_year'];
 
 	if (is_null($month) && is_null($year)) $date = new DateTime();
-	else $date = DateTime::createFromFormat('Y-m', $year . '-' . $month);
+	else $date = DateTime::createFromFormat('Y-m-d', $year . '-' . $month. '-15');
 
 	if ($date !== false) {
 		$date_errors = DateTime::getLastErrors();
@@ -79,3 +79,12 @@ function sgc_theme_menu_link_atts( $atts, $item, $args ) {
 }
 
 add_filter( 'nav_menu_link_attributes', 'sgc_theme_menu_link_atts', 10, 3 );
+
+// https://stackoverflow.com/questions/4586835/how-to-pass-extra-variables-in-url-with-wordpress
+function sgc_theme_query_vars($vars) {
+	$vars[] = 'calendar_month';
+	$vars[] = 'calendar_year';
+	return $vars;
+}
+
+add_filter( 'query_vars', 'sgc_theme_query_vars', 10, 1 );

@@ -13,8 +13,8 @@
 	$next_month->modify('first day of next month');
 	$previous_month->modify('first day of previous month');
 
-	$next_month_link = $url . "/?month={$next_month->format('m')}&year={$next_month->format('Y')}";
-	$previous_month_link = $url . "/?month={$previous_month->format('m')}&year={$previous_month->format('Y')}";
+	$next_month_link = $url . "/?calendar_month={$next_month->format('m')}&calendar_year={$next_month->format('Y')}";
+	$previous_month_link = $url . "/?calendar_month={$previous_month->format('m')}&calendar_year={$previous_month->format('Y')}";
 
 	$events_query = sgc_event_get_month_query(intval($date->format('m')), intval($date->format('Y')));
 ?>
@@ -42,7 +42,7 @@
 		</div>
 	
 	<?php else: ?>
-		<p class="text-bold light-gray">Nothing this month.</p>
+		<p class="event-nothing">Nothing this month yet.</p>
 	<?php endif; ?>
 
 	<a
