@@ -14,12 +14,12 @@
 		<?php
 			$cta_items = wp_nav_menu(
 				array(
-					'menu'        => 'Hero Banner Links',
-					'container'   => false,
-					'menu_class'  => false,
-					'depth'       => 1,
-					'echo'        => false,
-					'items_wrap'  => '%3$s'
+					'theme_location' => 'hero',
+					'container'      => false,
+					'menu_class'     => false,
+					'depth'          => 1,
+					'echo'           => false,
+					'items_wrap'     => '%3$s'
 				)
 			);
 

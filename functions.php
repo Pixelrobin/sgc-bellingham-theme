@@ -74,7 +74,7 @@ function sgc_theme_get_event_time_range($event_info) {
 }
 
 function sgc_theme_menu_link_atts( $atts, $item, $args ) {
-	if ($args->menu === 'Hero Banner Links') $atts['class'] = 'button';
+	if ($args->theme_location === 'hero') $atts['class'] = 'button';
 	return $atts;
 }
 
