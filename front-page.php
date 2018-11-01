@@ -14,7 +14,7 @@
 		<?php
 			$cta_items = wp_nav_menu(
 				array(
-					'menu'        => 'hero',
+					'menu'        => 'Hero Banner Links',
 					'container'   => false,
 					'menu_class'  => false,
 					'depth'       => 1,

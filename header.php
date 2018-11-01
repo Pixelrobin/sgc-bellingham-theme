@@ -53,13 +53,11 @@
 					<ul class="main-nav__links">
 						<?php wp_nav_menu(
 							array(
-								'menu'        => 'header-menu',
+								'menu'        => 'Header Menu',
 								'container'   => '',
 								'menu_class'  => '',
 								'depth'       => 2,
 								'items_wrap'  => '%3$s'
-								//'link_before' => '<span>',
-								//'link_after'  => '</span>'
 							)
 						); ?>
 					</ul>
