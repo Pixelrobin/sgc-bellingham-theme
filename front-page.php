@@ -38,7 +38,7 @@
 
 			<h2>Latest News</h2>
 
-			<div class="home-news space-below">
+			<div class="home-news">
 
 				<?php while ($news_query->have_posts()): $news_query->the_post(); ?>
 					<a class="home-news__item" href="<?php the_permalink() ?>">
@@ -47,9 +47,9 @@
 					</a>
 				<?php endwhile; ?>
 
-				<a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="button">More News</a>
-
 			</div>
+
+			<a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="button space-below">More News</a>
 
 		<?php endif; ?>
 
