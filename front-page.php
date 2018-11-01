@@ -41,7 +41,7 @@
 			<div class="home-news space-below">
 
 				<?php while ($news_query->have_posts()): $news_query->the_post(); ?>
-					<a class="home-news__item" href="#">
+					<a class="home-news__item" href="<?php the_permalink() ?>">
 						<span class="home-news__item__date"><?php the_date(); ?></span>
 						<span class="h3"><?php the_title(); ?></span>
 					</a>
@@ -60,7 +60,7 @@
 			<?php $videos = sgc_youtube_get_latest_videos(3); ?>
 			
 			<?php foreach ($videos as $video): ?>
-				<a href="#" class="home-videos__item">
+				<a href="https://youtube.com/watch?v=<?php echo $video->id->videoId ?>" class="home-videos__item">
 					<img class="home-videos__item__thumb" src="<?php echo $video->snippet->thumbnails->medium->url; ?>" alt="">
 					<span class="home-videos__item__name"><?php echo $video->snippet->title; ?></span>
 				</a>
