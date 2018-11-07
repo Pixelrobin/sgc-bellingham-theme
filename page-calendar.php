@@ -16,7 +16,7 @@
 	$next_month_link = $url . "/?calendar_month={$next_month->format('m')}&calendar_year={$next_month->format('Y')}";
 	$previous_month_link = $url . "/?calendar_month={$previous_month->format('m')}&calendar_year={$previous_month->format('Y')}";
 
-	$events_query = sgc_event_get_month_query(intval($date->format('m')), intval($date->format('Y')));
+	$events_query = event_getter_get_month_query(intval($date->format('m')), intval($date->format('Y')));
 ?>
 
 <h1 class="post-title"><?php echo $date->format('F Y') ?></h1>
@@ -25,18 +25,16 @@
 
 	<?php if ($events_query->have_posts()): ?>
 		
-		<div class="events">
+		<div class="tile-container">
 			
 			<?php while ($events_query->have_posts()): $events_query->the_post(); ?>
-				<?php $event_info = sgc_event_get_event_info(get_the_ID()); ?>
+				<?php $event_info = event_getter_get_event_info(get_the_ID()); ?>
 
-				<div class="events__item">
-					<span class="events__item__date"><?php echo $event_info['date']; ?></span>
-					<br>
-					<a href="<?php the_permalink(); ?>" class="events__item__title"><?php echo get_the_title();?></a>
-					<br>
-					<span class="events__item__time"><?php echo sgc_theme_get_event_time_range($event_info); ?></span>
-				</div>
+				<a href="<?php the_permalink(); ?>" class="tile">
+					<span class="tile__date"><?php echo event_getter_get_event_range(get_the_ID()); ?></span>
+					<h2 class="h4 tile__title"><?php the_title(); ?></h2>
+					<span class="tile__more-details">More Details</span>
+				</a>
 			<?php endwhile; ?>
 		
 		</div>

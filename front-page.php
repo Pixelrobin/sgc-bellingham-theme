@@ -31,19 +31,20 @@
 </div>
 
 <div class="home-content space-below">
-	<div class="home-content__main space-below">
+	<div class="home-content__main">
 		<?php $news_query = sgc_theme_home_posts_query() ?>
 
 		<?php if ($news_query->have_posts()): ?>
 
 			<h2>Latest News</h2>
 
-			<div class="home-news">
+			<div class="tile-container">
 
 				<?php while ($news_query->have_posts()): $news_query->the_post(); ?>
-					<a class="home-news__item" href="<?php the_permalink() ?>">
-						<span class="home-news__item__date"><?php the_date(); ?></span>
-						<span class="h3"><?php the_title(); ?></span>
+					<a href="<?php the_permalink(); ?>" class="tile tile--black">
+						<span class="tile__date"><?php the_date(); ?></span>
+						<h2 class="h4 tile__title"><?php the_title(); ?></h2>
+						<span class="tile__more-details">More Details</span>
 					</a>
 				<?php endwhile; ?>
 
@@ -74,22 +75,20 @@
 	<div class="home-content__sidebar">
 		<h2>Events</h2>
 
-		<?php $events_query = sgc_event_get_upcoming_query(4); ?>
+		<?php $events_query = event_getter_get_month_query(); ?>
 
 		<?php if ($events_query->have_posts()): ?>
 			
 			<div class="events events--home">
 				
 				<?php while ($events_query->have_posts()): $events_query->the_post(); ?>
-					<?php $event_info = sgc_event_get_event_info(get_the_ID()); ?>
+					<?php $event_info = event_getter_get_event_info(get_the_ID()); ?>
 
-					<div class="events__item">
-						<span class="events__item__date"><?php echo $event_info['date']; ?></span>
-						<br>
-						<a href="<?php the_permalink(); ?>" class="events__item__title"><?php echo get_the_title();?></a>
-						<br>
-						<span class="events__item__time"><?php echo sgc_theme_get_event_time_range($event_info); ?></span>
-					</div>
+					<a href="<?php the_permalink(); ?>" class="tile tile--single">
+						<span class="tile__date"><?php echo event_getter_get_event_range(get_the_ID()); ?></span>
+						<h2 class="h4 tile__title"><?php the_title(); ?></h2>
+						<span class="tile__more-details">More Details</span>
+					</a>
 				<?php endwhile; ?>
 			
 			</div>

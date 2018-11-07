@@ -11,13 +11,36 @@
 
 	<div class="page">
 		<?php if (get_post_type() === 'event'): ?>
-			<?php $event_info = sgc_event_get_event_info($post->ID, 'l, F j'); ?>
-			<?php $time_range = sgc_theme_get_event_time_range($event_info); ?>
+			<?php $event_info = event_getter_get_event_info($post->ID, 'l, F j'); ?>
 
-			<div class="events__item events__item--single">
-				<span class="events__item__title">Event Details:</span><br>
-				<span><?php echo $event_info['date']; ?></span><br>
-				<span><?php echo $time_range ?></span>
+			<div class="event__details event__details--single">
+				<h2 class="event__details__title">Event Details:</h2>
+
+				<div class="event__details__table">
+					<span class="event__details__table__row">
+						<span class="event__details__table__key">Name:</span>
+						<span class="event__details__table__value"><?php the_title(); ?></span>
+					</span>
+
+					<span class="event__details__table__row">
+						<span class="event__details__table__key">Starts:</span>
+						<span class="event__details__table__value"><?php echo $event_info['date_start']; ?></span>
+					</span>
+
+					<?php if ($event_info['date_end']): ?>
+						<span class="event__details__table__row">
+							<span class="event__details__table__key">Ends:</span>
+							<span class="event__details__table__value"><?php echo $event_info['date_end']; ?></span>
+						</span>
+					<?php endif; ?>
+
+					<?php if ($event_info['location']): ?>
+						<span class="event__details__table__row">
+							<span class="event__details__table__key">Location:</span>
+							<span class="event__details__table__value"><?php echo $event_info['location']; ?></span>
+						</span>
+					<?php endif; ?>
+				</div>
 			</div>
 
 		<?php endif; ?>
