@@ -1,9 +1,3 @@
-<?php
-	// Global setup
-	global $script_name;
-	$script_name = 'index';
-?>
-
 <?php get_header(); ?>
 
 <div class="home-hero space-below">

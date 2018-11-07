@@ -6,6 +6,9 @@ const cssnano      = require("gulp-cssnano");
 const bs           = require("browser-sync");
 const gulpWebpack  = require('webpack-stream');
 const named        = require('vinyl-named');
+const del          = require('del');
+
+let mode = 'development';
 
 gulp.task("sync", () => {
 	bs.init({
@@ -23,7 +26,7 @@ gulp.task("styles", () => {
 			cascade: true
 		}))
 		.pipe(cssnano())
-		.pipe(gulp.dest("dist/styles"))
+		.pipe(gulp.dest("assets/styles"))
 		.pipe(bs.stream());
 });
 
@@ -44,9 +47,9 @@ gulp.task("scripts", () =>
 				}]
 			},
 
-			mode: 'development'
+			mode: mode
 		}, webpack))
-		.pipe(gulp.dest("dist/scripts"))
+		.pipe(gulp.dest("assets/scripts"))
 );
 
 gulp.task("watchers", (done) => {
@@ -55,7 +58,31 @@ gulp.task("watchers", (done) => {
 	gulp.watch("./**/*.php").on("change", bs.reload);
 
 	done();
-})
+});
+
+gulp.task('clean', () =>
+	del([
+		'assets/**/*',
+		'dist/**/*'
+	])
+);
+
+gulp.task('copy-to-dist', gulp.series(
+	() => gulp.src('./media/**/*').pipe(gulp.dest('dist/media')),  // Media
+	() => gulp.src('./**/*.php').pipe(gulp.dest('dist')),          // PHP
+	() => gulp.src('./style.css').pipe(gulp.dest('dist')),         // style.css
+	() => gulp.src('./assets/**/*').pipe(gulp.dest('dist/assets')) // Assets
+));
 
 gulp.task("dev", gulp.series("styles", "scripts", "watchers", "sync"));
-//gulp.task("build", )
+gulp.task("build", gulp.series(
+		done => {
+			mode = 'production';
+			done()
+		},
+		'clean',
+		'scripts',
+		'styles',
+		'copy-to-dist'
+	)
+);

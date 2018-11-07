@@ -15,11 +15,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/dist/styles/main.css">
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/assets/styles/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,600" rel="stylesheet">
 	
 	
-	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/dist/scripts/<?php echo $script_name ?>.js"></script>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/assets/scripts/<?php echo $script_name ?>.js"></script>
 
 	<?php wp_head(); ?>
 </head>

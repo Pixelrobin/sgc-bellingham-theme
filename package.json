@@ -6,13 +6,15 @@
   "author": "Michael Savchuk",
   "license": "MIT",
   "scripts": {
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "build": "gulp build"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.26.0",
+    "del": "^3.0.0",
     "gulp": "next",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",
