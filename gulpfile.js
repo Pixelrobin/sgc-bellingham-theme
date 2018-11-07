@@ -69,7 +69,7 @@ gulp.task('clean', () =>
 
 gulp.task('copy-to-dist', gulp.series(
 	() => gulp.src('./media/**/*').pipe(gulp.dest('dist/media')),  // Media
-	() => gulp.src('./**/*.php').pipe(gulp.dest('dist')),          // PHP
+	() => gulp.src('*.php').pipe(gulp.dest('dist')),               // PHP
 	() => gulp.src('./style.css').pipe(gulp.dest('dist')),         // style.css
 	() => gulp.src('./assets/**/*').pipe(gulp.dest('dist/assets')) // Assets
 ));
