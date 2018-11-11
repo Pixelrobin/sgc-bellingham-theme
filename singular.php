@@ -5,6 +5,8 @@
 <article>
 	<?php if (get_post_type() === 'post'): ?>
 		<span class="post-date text-centered"><?php the_date(); ?></span>
+	<?php elseif (get_post_type() === 'event'): ?>
+	<span class="post-date text-centered">Event:</span>
 	<?php endif; ?>
 
 	<h1 class="post-title"><?php the_title(); ?></h1>

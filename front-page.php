@@ -62,7 +62,7 @@
 			<?php endforeach; ?>
 		</div>
 
-		<a href="https://www.youtube.com/channel/UCr9ZBVBy9DfGs-NAgL5gu1Q" class="button">More Videos</a>
+		<a href="https://www.youtube.com/channel/UCr9ZBVBy9DfGs-NAgL5gu1Q" class="button space-below">More Videos</a>
 
 	</div>
 
@@ -73,7 +73,7 @@
 
 		<?php if ($events_query->have_posts()): ?>
 			
-			<div class="events events--home">
+			<div class="tile-container tine-container--home">
 				
 				<?php while ($events_query->have_posts()): $events_query->the_post(); ?>
 					<?php $event_info = event_getter_get_event_info(get_the_ID()); ?>
