@@ -24,10 +24,19 @@
 						<span class="event__details__table__value"><?php the_title(); ?></span>
 					</span>
 
-					<span class="event__details__table__row">
-						<span class="event__details__table__key">Starts:</span>
-						<span class="event__details__table__value"><?php echo $event_info['date_start']; ?></span>
-					</span>
+					<?php if ($event_info['date']): ?>
+						<span class="event__details__table__row">
+							<span class="event__details__table__key">Date:</span>
+							<span class="event__details__table__value"><?php echo $event_info['date']; ?></span>
+						</span>
+					<?php endif; ?>
+
+					<?php if ($event_info['date_start']): ?>
+						<span class="event__details__table__row">
+							<span class="event__details__table__key">Starts:</span>
+							<span class="event__details__table__value"><?php echo $event_info['date_start']; ?></span>
+						</span>
+					<?php endif; ?>
 
 					<?php if ($event_info['date_end']): ?>
 						<span class="event__details__table__row">
