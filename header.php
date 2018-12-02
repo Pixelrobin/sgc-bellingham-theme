@@ -25,7 +25,6 @@
 	<meta name="msapplication-config" content="<?php echo get_template_directory_uri() ?>/media/icons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/assets/styles/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,600" rel="stylesheet">
 	
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/assets/scripts/<?php echo $script_name ?>.js"></script>

@@ -7,6 +7,17 @@ function sgc_theme_setup() {
 	add_theme_support( 'title-tag' );
 }
 
+function sgc_theme_scripts_styles() {
+	wp_enqueue_style(
+		'sgc-theme-main',
+		get_template_directory_uri() . '/assets/styles/main.css',
+		array(),
+		filemtime(get_template_directory() . '/assets/styles/main.css')
+	);
+}
+
+add_action('wp_enqueue_scripts', 'sgc_theme_scripts_styles');
+
 function sgc_theme_home_posts_query() {
 	$args = array(
 		'post_type' => 'post',
