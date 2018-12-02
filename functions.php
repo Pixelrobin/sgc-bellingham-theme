@@ -61,18 +61,6 @@ function sgc_theme_previous_posts_link() {
 	}
 }
 
-function sgc_theme_get_event_time_range($event_info) {
-	$start_time = $event_info['start_time'];
-	$end_time = $event_info['end_time'];
-	
-	if ($start_time) {
-		if ($end_time) {
-			return $start_time . ' - ' . $end_time;
-		} else return $start_time;
-	} else if ($end_time) return 'Ends at ' . $end_time;
-	else return '';
-}
-
 function sgc_theme_menu_link_atts( $atts, $item, $args ) {
 	if ($args->theme_location === 'hero') $atts['class'] = 'button';
 	return $atts;

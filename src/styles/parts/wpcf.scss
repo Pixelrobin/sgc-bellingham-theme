@@ -1,0 +1,28 @@
+// Wordpress contact form 7 overrides
+
+.wpcf7 {
+	p {
+		margin: 0;
+	}
+}
+
+input.wpcf7-not-valid {
+	margin-bottom: 0;
+}
+
+span.wpcf7-not-valid-tip {
+	margin-bottom: 2rem;
+}
+
+div.wpcf7-response-output {
+	border: none !important;
+	color: white;
+	border-radius: $radius-small;
+	background-color: $color-blue;
+	padding: 1rem !important;
+	margin: 0 !important;
+
+	&.wpcf7-validation-errors {
+		background-color: $color-red;
+	}
+}

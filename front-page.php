@@ -69,7 +69,7 @@
 	<div class="home-content__sidebar">
 		<h2>Events</h2>
 
-		<?php $events_query = event_getter_get_month_query(); ?>
+		<?php $events_query = event_getter_get_upcoming_query(4); ?>
 
 		<?php if ($events_query->have_posts()): ?>
 			
